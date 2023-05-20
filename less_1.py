@@ -114,11 +114,10 @@ some_code(*words)
 Байтовое представление - b'standard', строковое представление - standard
 """
 
-
+"""
 5.Выполнить пинг веб-ресурсов yandex.ru, youtube.com и 
 преобразовать результаты из байтовового в строковый тип на кириллице.
-
-MAX_LINES = 5
+"""
 
 def ping_webs(*args):
     for web in args:
