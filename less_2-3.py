@@ -24,9 +24,9 @@ data = {
     'white_wine': ['Chardonnay', 'Riesling', 'Sauvignon_Blanc'],
     'quantity': 6,
     'price': {
-        'Chardonnay': '26$',
-        'Riesling' : '15$-18$',
-        'Sauvignon_Blanc' : '20$-22$'
+        'Chardonnay': '26\u20ac',
+        'Riesling' : '15\u20ac-18\u20ac',
+        'Sauvignon_Blanc' : '20\u20ac-22\u20ac'
     }
 }
 
