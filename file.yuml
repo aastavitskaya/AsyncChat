@@ -1,9 +1,0 @@
-price:
-  Chardonnay: 26$
-  Riesling: 15$-18$
-  Sauvignon_Blanc: 20$-22$
-quantity: 6
-white_wine:
-- Chardonnay
-- Riesling
-- Sauvignon_Blanc

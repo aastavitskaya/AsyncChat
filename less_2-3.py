@@ -30,10 +30,10 @@ data = {
     }
 }
 
-with open('file.yuml', 'w', encoding='utf-8') as f:
+with open('file.yaml', 'w', encoding='utf-8') as f:
     yaml.dump(data, f, default_flow_style=False, allow_unicode=True)
 
-with open('file.yuml', 'r', encoding='utf-8') as f:
+with open('file.yaml', 'r', encoding='utf-8') as f:
     loading = yaml.load(f, Loader=yaml.SafeLoader)
 
 print(data == loading)
