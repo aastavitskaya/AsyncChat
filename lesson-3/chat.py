@@ -1,32 +1,11 @@
 import argparse
-import socket
+from socket import *
 import json
 
 ADDRESS = 'localhost'
 PORT = 7777
 CONNECTIONS = 10
-
-
-def get_server_socket(addr, port):
-    s = socket.socket()
-    s.bind((addr, port))
-    s.listen(CONNECTIONS)
-    return s
-
-
-def get_client_socket(addr, port):
-    s = socket.socket()
-    s.connect((addr, port))
-    return s
-
-
-def send_data(recipient, data):
-    recipient.send(json.dumps(data).encode('utf-8'))
-
-
-def get_data(sender):
-    return json.loads(sender.recv(1024).decode("utf-8"))
-
+BYTES = 1024
 
 def create_parser():
     parser = argparse.ArgumentParser(
@@ -38,3 +17,27 @@ def create_parser():
     parser_group.add_argument('-p', '--port', type=int, default=PORT, help='TCP port')
 
     return parser
+
+class Chat:
+    def __init__(self):
+        self.parser = create_parser()
+
+    def send_data(self, recipient, data):
+        recipient.send(json.dumps(data).encode("utf-8"))
+
+    def get_data(self, sender, bythes_length=BYTES):
+        return json.loads(sender.recv(bythes_length).decode("utf-8"))
+
+
+class BaseServer(Chat):
+    def get_server_socket(self, addr, port):
+        s = socket(AF_INET, SOCK_STREAM)
+        s.bind((addr, port))
+        s.listen(CONNECTIONS)
+        return s
+
+class BaseClient(Chat):
+    def get_client_socket(self, addr, port):
+        s = socket(AF_INET, SOCK_STREAM)
+        s.connect((addr, port))
+        return s

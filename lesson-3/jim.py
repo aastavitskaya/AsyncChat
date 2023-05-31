@@ -1,32 +1,39 @@
 from datetime import datetime
 
-TIME = datetime.now().replace(microsecond=0).isoformat(sep=' ')
 
-RESPONSE = {
-    "response": None,
-    "time": str(TIME),
-    "alert": None,
-    "from": 'Server',
-    "contacts": None
-}
+RESP_OK = ('200', 'OK')
+RESP_BAD = ('404', 'Not found')
 
-PRESENCE = {
-    "action": "presence",
-    "time": str(TIME),
-    "type": "status",
-    "user": {
-        "status": "I am here!"
+def get_time():
+    return datetime.now().replace(microsecond=0).isoformat(sep=' ')
+
+def get_response(status, alert):
+    response = {
+        "response": status,
+        "time": get_time(),
+        "alert": alert,
+        "from": 'Server',
+        "contacts": None
     }
-}
+    return response
 
-MESSAGE = {
-    "action": "msg",
-    "time": str(TIME),
-    "to": None,
-    "message": None
-}
+def create_presence():
+    presence = {
+        "action": "presence",
+        "time": get_time(),
+        "type": "status",
+        "user": {
+            "status": "I am here!"
+        }
+    }
+    return presence
 
-SERV_RESP = (
-    ('200', 'OK'),
-    ('404', 'Not found')
-)
+
+def create_message(text):
+    message = {
+        "action": "msg",
+        "time": get_time(),
+        "to": None,
+        "message": text
+    }
+    return message
