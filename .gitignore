@@ -1,2 +1,3 @@
 async/
 .vscode/
+__pycache__/
