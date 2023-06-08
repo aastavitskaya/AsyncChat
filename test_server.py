@@ -21,8 +21,6 @@ class TestServer(unittest.TestCase):
     def test_socket(self):
         self.assertIsInstance(self.sock, socket.socket)
 
-        
-
-
+    
 if __name__ == '__main__':
     unittest.main()
