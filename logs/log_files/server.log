@@ -1,0 +1,3 @@
+2023-06-09 13:10:05,523 CRITICAL config_server_log.py Критическая ошибка
+2023-06-09 13:10:05,524 ERROR config_server_log.py Ошибка
+2023-06-09 13:10:05,525 INFO config_server_log.py Информационное сообщение

@@ -1,0 +1,3 @@
+2023-06-09 13:07:43,845 CRITICAL config_client_log.py Критическая ошибка
+2023-06-09 13:07:43,846 ERROR config_client_log.py Ошибка
+2023-06-09 13:07:43,846 INFO config_client_log.py Информационное сообщение
