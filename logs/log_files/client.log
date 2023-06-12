@@ -1,0 +1,4 @@
+2023-06-12 16:34:46,458 INFO chat.py Что же это такое?
+2023-06-12 16:34:46,460 INFO client.py Connected to server on: ('127.0.0.1', 7777)
+2023-06-12 19:43:10,738 INFO chat.py Что же это такое?
+2023-06-12 19:43:10,739 INFO client.py Connected to server on: ('127.0.0.1', 7777)
