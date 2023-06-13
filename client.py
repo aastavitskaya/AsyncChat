@@ -1,3 +1,4 @@
+from logs.config_client_log import LOGGER
 from chat import BaseClient
 from jim import create_message, create_presence
 
@@ -8,11 +9,11 @@ class Client(BaseClient):
         self.socket = self.get_client_socket(namespace.addr, namespace.port)
 
     def main(self):
-        print(f'Connected to server on: {self.socket.getpeername()}')
+        LOGGER.info(f'Connected to server on: {self.socket.getpeername()}')
         self.send_data(self.socket, create_presence())
         while True:
             data = self.get_data(self.socket)
-            print(data)
+            LOGGER.info(data)
             if data['response'] != '200':
                 break
             msg = input('Введите сообщение ("exit" для выхода): ')

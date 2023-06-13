@@ -1,0 +1,7 @@
+2023-06-12 16:34:19,354 INFO chat.py Что же это такое?
+2023-06-12 16:34:19,355 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-12 19:43:08,253 INFO chat.py Что же это такое?
+2023-06-12 19:43:08,254 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-12 23:27:22,945 INFO chat.py Что же это такое?
+2023-06-12 23:27:22,947 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-12 23:27:44,834 INFO server.py 2023-06-12 23:27:44: I am here!
