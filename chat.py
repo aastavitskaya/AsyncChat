@@ -20,7 +20,7 @@ def create_parser():
     parser_group = parser.add_argument_group(title='Parameters')
     parser_group.add_argument('-a', '--addr', default=ADDRESS, help='IP address')
     parser_group.add_argument('-p', '--port', type=int, default=PORT, help='TCP port')
-    logger.info(f'Что же это такое?')
+    logger.info(f'Полёт нормальный')
 
     return parser
 

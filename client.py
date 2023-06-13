@@ -13,7 +13,7 @@ class Client(BaseClient):
         self.send_data(self.socket, create_presence())
         while True:
             data = self.get_data(self.socket)
-            print(data)
+            LOGGER.info(data)
             if data['response'] != '200':
                 break
             msg = input('Введите сообщение ("exit" для выхода): ')

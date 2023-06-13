@@ -16,7 +16,7 @@ class Server(BaseServer):
             data = self.get_data(client)
             if data['action'] == 'presence':
                 response = get_response(*RESP_OK)
-                print(f'{data["time"]}: {data["user"]["status"]}')
+                LOGGER.info(f'{data["time"]}: {data["user"]["status"]}')
             elif data['action'] == 'msg' and data["message"] != 'exit':
                 print(f'{data["time"]} : {data["message"]}')
                 response = get_response(*RESP_OK)

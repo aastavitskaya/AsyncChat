@@ -2,3 +2,7 @@
 2023-06-12 16:34:46,460 INFO client.py Connected to server on: ('127.0.0.1', 7777)
 2023-06-12 19:43:10,738 INFO chat.py Что же это такое?
 2023-06-12 19:43:10,739 INFO client.py Connected to server on: ('127.0.0.1', 7777)
+2023-06-12 23:27:44,832 INFO chat.py Что же это такое?
+2023-06-12 23:27:44,833 INFO client.py Connected to server on: ('127.0.0.1', 7777)
+2023-06-12 23:27:44,835 INFO client.py {'response': '200', 'time': '2023-06-12 23:27:44', 'alert': 'OK', 'from': 'Server', 'contacts': None}
+2023-06-12 23:27:55,988 INFO client.py {'response': '200', 'time': '2023-06-12 23:27:55', 'alert': 'OK', 'from': 'Server', 'contacts': None}
