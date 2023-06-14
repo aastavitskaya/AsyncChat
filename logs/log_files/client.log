@@ -6,3 +6,11 @@
 2023-06-12 23:27:44,833 INFO client.py Connected to server on: ('127.0.0.1', 7777)
 2023-06-12 23:27:44,835 INFO client.py {'response': '200', 'time': '2023-06-12 23:27:44', 'alert': 'OK', 'from': 'Server', 'contacts': None}
 2023-06-12 23:27:55,988 INFO client.py {'response': '200', 'time': '2023-06-12 23:27:55', 'alert': 'OK', 'from': 'Server', 'contacts': None}
+2023-06-14 17:14:50,745 INFO chat.py Полёт нормальный
+2023-06-14 17:14:50,752 INFO client.py Connected to server on: ('127.0.0.1', 7777)
+2023-06-14 17:14:50,755 INFO client.py {'response': '200', 'time': '2023-06-14 17:14:50', 'alert': 'OK', 'from': 'Server', 'contacts': None}
+2023-06-14 17:24:01,749 INFO chat.py Полёт нормальный
+2023-06-14 17:24:01,757 INFO client.py Connected to server on: ('127.0.0.1', 7777)
+2023-06-14 17:24:01,760 INFO client.py {'response': '200', 'time': '2023-06-14 17:24:01', 'alert': 'OK', 'from': 'Server', 'contacts': None}
+2023-06-14 17:24:56,570 INFO chat.py Полёт нормальный
+2023-06-14 17:24:56,576 INFO chat.py Функция create_parser с параметрами ()была вызвана из функции __init__

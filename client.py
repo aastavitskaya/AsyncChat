@@ -1,13 +1,15 @@
 from logs.config_client_log import LOGGER
 from chat import BaseClient
 from jim import create_message, create_presence
-
+from chat import Log
 
 class Client(BaseClient):
+    @Log()
     def create_socket(self):
         namespace = self.parser.parse_args()
         self.socket = self.get_client_socket(namespace.addr, namespace.port)
 
+    @Log()
     def main(self):
         LOGGER.info(f'Connected to server on: {self.socket.getpeername()}')
         self.send_data(self.socket, create_presence())

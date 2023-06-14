@@ -3,6 +3,8 @@ import argparse
 from socket import *
 import json
 import logging
+import inspect
+
 
 name = sys.argv[0].split('.')[0]
 logger = logging.getLogger(name)
@@ -12,6 +14,18 @@ PORT = 7777
 CONNECTIONS = 10
 BYTES = 1024
 
+class Log:
+    def __call__(self, func):
+        def wrap(*args, **kwargs):
+            rez = func(*args, **kwargs)
+            logger.info(
+                f'Функция {func.__name__} с параметрами {*args, *kwargs}'
+                f'была вызвана из функции {inspect.stack()[1][3]}', stacklevel=2)
+            return rez
+    
+        return wrap
+
+@Log()
 def create_parser():
     parser = argparse.ArgumentParser(
         description='JSON instant messaging'
@@ -27,15 +41,18 @@ def create_parser():
 class Chat:
     def __init__(self):
         self.parser = create_parser()
-
+    
+    @Log()
     def send_data(self, recipient, data):
         recipient.send(json.dumps(data).encode("utf-8"))
 
+    @Log()
     def get_data(self, sender, bythes_length=BYTES):
         return json.loads(sender.recv(bythes_length).decode("utf-8"))
 
 
 class BaseServer(Chat):
+    @Log()
     def get_server_socket(self, addr, port):
         s = socket(AF_INET, SOCK_STREAM)
         s.bind((addr, port))
@@ -43,7 +60,9 @@ class BaseServer(Chat):
         return s
 
 class BaseClient(Chat):
+    @Log()
     def get_client_socket(self, addr, port):
         s = socket(AF_INET, SOCK_STREAM)
         s.connect((addr, port))
         return s
+    

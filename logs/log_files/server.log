@@ -1,7 +1,21 @@
-2023-06-12 16:34:19,354 INFO chat.py Что же это такое?
-2023-06-12 16:34:19,355 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
-2023-06-12 19:43:08,253 INFO chat.py Что же это такое?
-2023-06-12 19:43:08,254 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
-2023-06-12 23:27:22,945 INFO chat.py Что же это такое?
-2023-06-12 23:27:22,947 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
-2023-06-12 23:27:44,834 INFO server.py 2023-06-12 23:27:44: I am here!
+2023-06-14 17:13:36,215 INFO chat.py Полёт нормальный
+2023-06-14 17:14:15,356 INFO chat.py Полёт нормальный
+2023-06-14 17:14:15,364 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-14 17:14:50,753 INFO server.py 2023-06-14 17:14:50: I am here!
+2023-06-14 17:16:00,111 INFO chat.py Полёт нормальный
+2023-06-14 17:16:00,117 INFO chat.py Функция create_parser с параметрами () {}была вызвана из функции __init__
+2023-06-14 17:16:00,119 INFO server.py Функция get_server_socket с параметрами (<__main__.Server object at 0x7fccc69a3cd0>, 'localhost', 7777) {}была вызвана из функции create_socket
+2023-06-14 17:16:00,119 INFO server.py Функция create_socket с параметрами (<__main__.Server object at 0x7fccc69a3cd0>,) {}была вызвана из функции <module>
+2023-06-14 17:16:00,120 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-14 17:22:23,934 INFO chat.py Полёт нормальный
+2023-06-14 17:22:23,941 INFO chat.py Функция create_parser с параметрами ()была вызвана из функции __init__
+2023-06-14 17:22:23,942 INFO server.py Функция get_server_socket с параметрами (<__main__.Server object at 0x7f0dc99f7cd0>, 'localhost', 7777)была вызвана из функции create_socket
+2023-06-14 17:22:23,942 INFO server.py Функция create_socket с параметрами (<__main__.Server object at 0x7f0dc99f7cd0>,)была вызвана из функции <module>
+2023-06-14 17:22:23,943 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-14 17:23:07,590 INFO chat.py Полёт нормальный
+2023-06-14 17:23:07,598 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-14 17:24:01,759 INFO server.py 2023-06-14 17:24:01: I am here!
+2023-06-14 17:24:50,445 INFO chat.py Полёт нормальный
+2023-06-14 17:24:50,457 INFO chat.py Функция create_parser с параметрами ()была вызвана из функции __init__
+2023-06-14 17:25:01,988 INFO chat.py Полёт нормальный
+2023-06-14 17:25:01,996 INFO chat.py Функция create_parser с параметрами ()была вызвана из функции __init__

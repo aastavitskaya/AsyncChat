@@ -1,12 +1,15 @@
 from chat import BaseServer
 from jim import RESP_BAD, RESP_OK, get_response
 from logs.config_server_log import LOGGER
+from chat import Log
 
 class Server(BaseServer):
+    @Log()
     def create_socket(self):
         namespace = self.parser.parse_args()
         self.socket = self.get_server_socket(namespace.addr, namespace.port)
 
+    @Log()
     def main(self):
         LOGGER.info(
             f'Server starts on {self.socket.getsockname()} and waits connection'
