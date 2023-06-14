@@ -1,6 +1,6 @@
+from logs.config_server_log import LOGGER
 from chat import BaseServer
 from jim import RESP_BAD, RESP_OK, get_response
-from logs.config_server_log import LOGGER
 from chat import Log
 
 class Server(BaseServer):

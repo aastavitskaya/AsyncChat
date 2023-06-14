@@ -19,8 +19,8 @@ class Log:
         def wrap(*args, **kwargs):
             rez = func(*args, **kwargs)
             logger.info(
-                f'Функция {func.__name__} с параметрами {*args, *kwargs}'
-                f'была вызвана из функции {inspect.stack()[1][3]}', stacklevel=2)
+                f'Function {func.__name__} with parameters {*args, *kwargs}'
+                f'was called from function {inspect.stack()[1][3]}', stacklevel=2)
             return rez
     
         return wrap
