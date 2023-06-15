@@ -30,3 +30,14 @@
 2023-06-15 00:59:19,074 INFO client.py Function send_data with parameters (<__main__.Client object at 0x7f1c50cfbca0>, <socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 40662), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': '2023-06-15 00:59:19', 'type': 'status', 'user': {'status': 'I am here!'}})was called from function main
 2023-06-15 00:59:19,077 INFO client.py Function get_data with parameters (<__main__.Client object at 0x7f1c50cfbca0>, <socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 40662), raddr=('127.0.0.1', 7777)>)was called from function main
 2023-06-15 00:59:19,077 INFO client.py {'response': '200', 'time': '2023-06-15 00:59:19', 'alert': 'OK', 'from': 'Server', 'contacts': None}
+2023-06-15 11:02:59,120 INFO chat.py Полёт нормальный
+2023-06-15 11:02:59,127 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-15 11:02:59,128 INFO client.py Function get_client_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-15 11:02:59,128 INFO client.py Function create_socket with parameters ()was called from function <module>
+2023-06-15 11:02:59,129 INFO client.py Connected to server on: ('127.0.0.1', 7777)
+2023-06-15 11:02:59,131 INFO client.py Function send_data with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 43332), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': '2023-06-15 11:02:59', 'type': 'status', 'user': {'status': 'I am here!'}})was called from function main
+2023-06-15 11:02:59,132 INFO client.py Function get_data with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 43332), raddr=('127.0.0.1', 7777)>,)was called from function main
+2023-06-15 11:02:59,132 INFO client.py {'response': '200', 'time': '2023-06-15 11:02:59', 'alert': 'OK', 'from': 'Server', 'contacts': None}
+2023-06-15 11:03:23,062 INFO client.py Function send_data with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 43332), raddr=('127.0.0.1', 7777)>, {'action': 'msg', 'time': '2023-06-15 11:03:23', 'to': None, 'message': 'привет!'})was called from function main
+2023-06-15 11:03:23,064 INFO client.py Function get_data with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 43332), raddr=('127.0.0.1', 7777)>,)was called from function main
+2023-06-15 11:03:23,064 INFO client.py {'response': '200', 'time': '2023-06-15 11:03:23', 'alert': 'OK', 'from': 'Server', 'contacts': None}

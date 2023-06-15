@@ -17,9 +17,14 @@ BYTES = 1024
 class Log:
     def __call__(self, func):
         def wrap(*args, **kwargs):
+            wrapped_args = (
+                args[1:]
+                if args and issubclass(args[0].__class__, (Chat, type))
+                else args
+            )
             rez = func(*args, **kwargs)
             logger.info(
-                f'Function {func.__name__} with parameters {*args, *kwargs}'
+                f'Function {func.__name__} with parameters {*wrapped_args, *kwargs}'
                 f'was called from function {inspect.stack()[1][3]}', stacklevel=2)
             return rez
     
