@@ -7,7 +7,7 @@ from chat import Log
 
 class Server(BaseServer):
     def __init__(self):
-        super().__init__(self)
+        super().__init__()
         self.clients = []
         self.messages = deque()
 

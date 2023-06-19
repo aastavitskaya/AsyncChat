@@ -45,3 +45,8 @@
 2023-06-15 11:02:59,132 INFO server.py Function send_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 43332)>, {'response': '200', 'time': '2023-06-15 11:02:59', 'alert': 'OK', 'from': 'Server', 'contacts': None})was called from function main
 2023-06-15 11:03:23,062 INFO server.py Function get_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 43332)>,)was called from function main
 2023-06-15 11:03:23,063 INFO server.py Function send_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 43332)>, {'response': '200', 'time': '2023-06-15 11:03:23', 'alert': 'OK', 'from': 'Server', 'contacts': None})was called from function main
+2023-06-19 20:18:25,655 INFO chat.py Полёт нормальный
+2023-06-19 20:18:25,669 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-19 20:18:25,670 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-19 20:18:25,671 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-19 20:18:25,672 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
