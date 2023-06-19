@@ -13,7 +13,7 @@ ADDRESS = 'localhost'
 PORT = 7777
 CONNECTIONS = 10
 BYTES = 1024
-
+TIMEOUT = 1.0
 class Log:
     def __call__(self, func):
         def wrap(*args, **kwargs):
@@ -62,6 +62,7 @@ class BaseServer(Chat):
         s = socket(AF_INET, SOCK_STREAM)
         s.bind((addr, port))
         s.listen(CONNECTIONS)
+        s.settimeout(TIMEOUT)
         return s
 
 class BaseClient(Chat):
