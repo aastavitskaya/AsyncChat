@@ -50,3 +50,15 @@
 2023-06-19 20:18:25,670 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
 2023-06-19 20:18:25,671 INFO server.py Function create_socket with parameters ()was called from function <module>
 2023-06-19 20:18:25,672 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-20 09:41:21,887 INFO chat.py Полёт нормальный
+2023-06-20 09:41:21,897 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-20 09:41:21,898 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-20 09:41:21,899 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-20 09:41:21,899 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-20 09:42:22,698 INFO server.py The connection was set - client: ('127.0.0.1', 41564)
+2023-06-20 09:42:23,699 INFO server.py Function get_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 41564)>,)was called from function check_requests
+2023-06-20 09:42:23,700 INFO server.py Function check_requests with parameters ([<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 41564)>], [<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 41564)>])was called from function main
+2023-06-20 09:42:23,701 INFO server.py Function send_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 41564)>, {'action': 'presence', 'time': '2023-06-20 09:42:22', 'type': 'status', 'user': {'status': 'I am here!'}})was called from function write_responses
+2023-06-20 09:42:23,702 INFO server.py Function write_responses with parameters ([<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 41564)>], [<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 41564)>])was called from function main
+2023-06-20 09:42:51,733 INFO server.py Client ('127.0.0.1', 41564) disconnected
+2023-06-20 09:42:51,735 INFO server.py Function check_requests with parameters ([<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 41564)>], [])was called from function main

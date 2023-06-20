@@ -39,6 +39,7 @@ def create_parser():
     parser_group = parser.add_argument_group(title='Parameters')
     parser_group.add_argument('-a', '--addr', default=ADDRESS, help='IP address')
     parser_group.add_argument('-p', '--port', type=int, default=PORT, help='TCP port')
+    parser_group.add_argument('-m', '--mode', default='listen')
     logger.info(f'Полёт нормальный')
 
     return parser
