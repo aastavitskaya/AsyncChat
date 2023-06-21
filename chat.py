@@ -13,7 +13,7 @@ ADDRESS = 'localhost'
 PORT = 7777
 CONNECTIONS = 10
 BYTES = 1024
-
+TIMEOUT = 1.0
 class Log:
     def __call__(self, func):
         def wrap(*args, **kwargs):
@@ -39,6 +39,7 @@ def create_parser():
     parser_group = parser.add_argument_group(title='Parameters')
     parser_group.add_argument('-a', '--addr', default=ADDRESS, help='IP address')
     parser_group.add_argument('-p', '--port', type=int, default=PORT, help='TCP port')
+    parser_group.add_argument('-m', '--mode', default='listen')
     logger.info(f'Полёт нормальный')
 
     return parser
@@ -62,6 +63,7 @@ class BaseServer(Chat):
         s = socket(AF_INET, SOCK_STREAM)
         s.bind((addr, port))
         s.listen(CONNECTIONS)
+        s.settimeout(TIMEOUT)
         return s
 
 class BaseClient(Chat):
