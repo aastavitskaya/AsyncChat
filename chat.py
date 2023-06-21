@@ -4,7 +4,7 @@ from socket import *
 import json
 import logging
 import inspect
-
+import time
 
 name = sys.argv[0].split('.')[0]
 logger = logging.getLogger(name)
@@ -39,7 +39,7 @@ def create_parser():
     parser_group = parser.add_argument_group(title='Parameters')
     parser_group.add_argument('-a', '--addr', default=ADDRESS, help='IP address')
     parser_group.add_argument('-p', '--port', type=int, default=PORT, help='TCP port')
-    parser_group.add_argument('-m', '--mode', default='listen')
+    parser_group.add_argument('-n', '--name', default=None, help='Username')
     logger.info(f'Полёт нормальный')
 
     return parser
@@ -56,7 +56,7 @@ class Chat:
     def get_data(self, sender, bythes_length=BYTES):
         return json.loads(sender.recv(bythes_length).decode("utf-8"))
 
-
+    
 class BaseServer(Chat):
     @Log()
     def get_server_socket(self, addr, port):
