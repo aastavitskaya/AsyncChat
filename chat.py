@@ -53,8 +53,17 @@ class Chat:
         recipient.send(json.dumps(data).encode("utf-8"))
 
     @Log()
-    def get_data(self, sender, bythes_length=BYTES):
-        return json.loads(sender.recv(bythes_length).decode("utf-8"))
+    def get_data(self, sender):
+        encoded_response = sender.recv(BYTES)
+        if isinstance(encoded_response, bytes):
+            msg = json.loads(encoded_response.decode("utf-8"))
+            if isinstance(msg, dict):
+                return msg
+            else:
+                raise TypeError('Данные должны быть словарем')
+        else:
+            raise TypeError('Данные должны быть байтами')
+
 
     
 class BaseServer(Chat):

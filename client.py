@@ -1,10 +1,11 @@
 import threading
 import time
 import sys
+from json import JSONDecodeError
 from logs.config_client_log import LOGGER
 from chat import BaseClient
 from jim import ACTION, PRESENCE, RESPONSE, EXIT, ERROR, TIME, ACCOUNT_NAME, \
-    MESSAGE, MESSAGE_TEXT, SENDER, DESTINATION, create_message, create_presence
+    MESSAGE, MESSAGE_TEXT, SENDER, DESTINATION
 from chat import Log
 
 
@@ -24,7 +25,7 @@ class Client(BaseClient):
             namespace.addr, namespace.port)
         
     @Log()
-    def creating_message(self, action, sock, account_name):
+    def creating_message(action, sock, account_name):
         message = None
         if action == PRESENCE:
             message = {
@@ -66,14 +67,14 @@ class Client(BaseClient):
         LOGGER.error('Неверный формат сообщения от сервера')
         raise ValueError
     
-    def process(self, name):
+    def process(self):
         while True:
             try:
                 message = self.get_data(self.socket)
                 LOGGER.debug(f'Разбор сообщения {message} от сервера')
                 if ACTION in message and message[ACTION] == MESSAGE and SENDER in message \
                         and DESTINATION in message and MESSAGE_TEXT in message \
-                        and message[DESTINATION] == name:
+                        and message[DESTINATION] == self.name:
                     print(f'Получено сообщение от пользователя '
                           f'{message[SENDER]}:\n{"-" * 50}\n{message[MESSAGE_TEXT]}')
                     LOGGER.info(f'Получено сообщение от пользователя'
@@ -84,7 +85,25 @@ class Client(BaseClient):
                     ConnectionResetError):
                 LOGGER.critical('Потеряно соединение с сервером.')
                 break
-
+    
+    @Log()
+    def dialogue_with_user(self, sock, user_name):
+        print('Добро пожаловать в программу для общения по сети.')
+        while True:
+            command = input(f'{user_name}, введите команду. Help - вывести список команд:\n ').lower()
+            if command == 'help':
+                print(self.help)
+            elif command == 'message':
+                self.send_data(sock, self.creating_message(MESSAGE, sock, user_name))
+            elif command == 'exit':
+                self.send_data(sock, self.creating_message(EXIT, sock, user_name))
+                print('Завершение соединения.')
+                LOGGER.info('Завершение работы по команде пользователя.')
+                time.sleep(0.5)
+                break
+            else:
+                print('Команда не распознана, попробуйте снова.')
+                print(self.help)
     @Log()
     def main(self):
         if not self.name:
@@ -95,10 +114,12 @@ class Client(BaseClient):
             LOGGER.debug('Отправлено приветственное сообщение на сервер')
             answer = self.response(self.get_data(self.socket))
             print(answer)
-            LOGGER.info(f'Установлено соединение с сервером. Ответ сервера: {answer}')
         except ConnectionRefusedError:
             LOGGER.critical(f'Не удалось подключиться к серверу {self.address}:{self.port},'
                                    f' конечный компьютер отверг запрос на подключение.')
+            exit(1)
+        except JSONDecodeError:
+            LOGGER.error('Ошибка декодирования сообщения.')
             exit(1)
         else:
             sender = threading.Thread(target=self.dialogue_with_user, args=(self.socket, self.name))
@@ -112,8 +133,6 @@ class Client(BaseClient):
                 if receiver.is_alive() and sender.is_alive():
                     continue
                 break
-
-
 
 if __name__ == '__main__':
     client = Client()

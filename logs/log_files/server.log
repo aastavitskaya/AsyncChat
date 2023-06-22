@@ -88,3 +88,93 @@
 2023-06-22 01:04:04,906 INFO server.py Function create_socket with parameters ()was called from function <module>
 2023-06-22 01:04:04,906 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
 2023-06-22 01:04:14,495 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 41172)
+2023-06-22 01:10:47,722 INFO chat.py Полёт нормальный
+2023-06-22 01:10:47,733 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 01:10:47,734 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 01:10:47,735 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 01:10:47,735 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 01:10:54,409 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 59922)
+2023-06-22 01:12:50,001 INFO chat.py Полёт нормальный
+2023-06-22 01:12:50,010 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 01:12:50,012 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 01:12:50,012 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 01:12:50,012 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 01:12:58,638 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 43300)
+2023-06-22 01:15:16,133 INFO chat.py Полёт нормальный
+2023-06-22 01:15:16,145 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 01:15:16,149 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 01:15:16,151 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 01:15:16,153 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 01:15:20,523 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 33408)
+2023-06-22 01:15:54,499 INFO chat.py Полёт нормальный
+2023-06-22 01:15:54,508 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 01:15:54,509 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 01:15:54,509 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 01:15:54,510 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 01:15:59,568 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 38466)
+2023-06-22 01:17:09,579 INFO chat.py Полёт нормальный
+2023-06-22 01:17:09,592 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 01:17:09,594 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 01:17:09,597 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 01:17:09,598 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 01:17:13,035 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 50890)
+2023-06-22 01:20:59,908 INFO chat.py Полёт нормальный
+2023-06-22 01:20:59,915 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 01:20:59,916 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 01:20:59,918 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 01:20:59,918 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 01:21:03,870 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 59164)
+2023-06-22 11:47:14,108 INFO chat.py Полёт нормальный
+2023-06-22 11:47:14,122 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 11:47:14,125 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 11:47:14,126 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 11:47:14,127 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 11:47:38,042 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 35894)
+2023-06-22 11:52:17,468 INFO chat.py Полёт нормальный
+2023-06-22 11:52:17,480 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 11:52:17,482 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 11:52:17,482 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 11:52:17,482 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 11:52:20,455 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 55414)
+2023-06-22 11:55:07,871 INFO chat.py Полёт нормальный
+2023-06-22 11:55:07,878 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 11:55:07,879 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 11:55:07,880 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 11:55:07,880 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 11:55:11,087 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 41964)
+2023-06-22 11:55:36,524 INFO chat.py Полёт нормальный
+2023-06-22 11:55:36,533 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 11:55:36,536 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 11:55:36,537 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 11:55:36,537 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 11:55:38,975 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 49130)
+2023-06-22 11:57:25,568 INFO chat.py Полёт нормальный
+2023-06-22 11:57:25,575 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 11:57:25,577 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 11:57:25,578 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 11:57:25,578 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 11:57:30,187 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 46776)
+2023-06-22 12:50:19,080 INFO chat.py Полёт нормальный
+2023-06-22 12:50:19,094 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 12:50:19,096 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 12:50:19,096 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 12:50:19,097 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 12:50:24,645 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 41940)
+2023-06-22 12:53:53,463 INFO chat.py Полёт нормальный
+2023-06-22 12:53:53,476 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 12:53:53,479 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 12:53:53,481 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 12:53:53,483 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 12:53:58,773 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 53490)
+2023-06-22 15:46:21,257 INFO chat.py Полёт нормальный
+2023-06-22 15:46:21,264 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 15:46:21,266 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 15:46:21,267 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 15:46:21,267 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 15:46:26,773 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 48574)
+2023-06-22 18:57:34,793 INFO chat.py Полёт нормальный
+2023-06-22 18:57:34,801 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 18:57:34,802 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 18:57:34,802 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 18:57:34,803 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 18:57:40,010 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 60018)

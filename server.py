@@ -24,11 +24,11 @@ class Server(BaseServer):
                 and ACCOUNT_NAME in message:
             if message[ACCOUNT_NAME] not in self.names.keys():
                 self.names[message[ACCOUNT_NAME]] = client
-                self.send_data(self.socket, {RESPONSE: 200})
+                self.send_data(client, {RESPONSE: 200})
                 return
             else:
-                self.send_data(self.socket, {RESPONSE: 400, ERROR: 'Имя пользователя уже занято.'})
-                self.clients.remove(self.socket)
+                self.send_data(client, {RESPONSE: 400, ERROR: 'Имя пользователя уже занято.'})
+                self.clients.remove(client)
                 self.socket.close()
             return
         elif ACTION in message and message[ACTION] == MESSAGE and DESTINATION in message \
@@ -54,7 +54,7 @@ class Server(BaseServer):
             del self.names[ACCOUNT_NAME]
             return
         else:
-            self.send_data(self.socket, {RESPONSE: 400, ERROR: 'Bad Request'})
+            self.send_data(client, {RESPONSE: 400, ERROR: 'Bad Request'})
             return
 
     # @Log()
