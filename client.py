@@ -25,7 +25,7 @@ class Client(BaseClient):
             namespace.addr, namespace.port)
         
     @Log()
-    def creating_message(action, sock, account_name):
+    def creating_message(self, action, sock, account_name):
         message = None
         if action == PRESENCE:
             message = {
@@ -67,14 +67,14 @@ class Client(BaseClient):
         LOGGER.error('Неверный формат сообщения от сервера')
         raise ValueError
     
-    def process(self):
+    def process(self, sock, name):
         while True:
             try:
-                message = self.get_data(self.socket)
+                message = self.get_data(sock)
                 LOGGER.debug(f'Разбор сообщения {message} от сервера')
                 if ACTION in message and message[ACTION] == MESSAGE and SENDER in message \
                         and DESTINATION in message and MESSAGE_TEXT in message \
-                        and message[DESTINATION] == self.name:
+                        and message[DESTINATION] == name:
                     print(f'Получено сообщение от пользователя '
                           f'{message[SENDER]}:\n{"-" * 50}\n{message[MESSAGE_TEXT]}')
                     LOGGER.info(f'Получено сообщение от пользователя'

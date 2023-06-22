@@ -10,7 +10,7 @@ class Server(BaseServer):
     def __init__(self):
         super().__init__()
         self.clients = []
-        self.messages = deque()
+        self.messages = []
         self.names = {}
 
     @Log()
@@ -98,7 +98,7 @@ class Server(BaseServer):
             err_lst = []
             try:
                 if self.clients:
-                    recv_data_lst, send_data_lst, err_lst = select.select(self.clients, self.clients, [], 0)
+                    recv_data_lst, send_data_lst, err_lst = select(self.clients, self.clients, [], 0)
             except OSError:
                 pass
             if recv_data_lst:
