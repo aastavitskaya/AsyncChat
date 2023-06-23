@@ -23,6 +23,7 @@ def create_presence():
         "time": get_time(),
         "type": "status",
         "user": {
+            "account_name": '',
             "status": "I am here!"
         }
     }
@@ -37,3 +38,18 @@ def create_message(text):
         "message": text
     }
     return message
+
+# Протокол JIM основные ключи:
+ACTION = 'action'
+TIME = 'time'
+ACCOUNT_NAME = 'account_name'
+SENDER = 'from'
+DESTINATION = 'to'
+
+# Прочие ключи, используемые в протоколе
+PRESENCE = 'presence'
+MESSAGE = 'message'
+EXIT = 'exit'
+MESSAGE_TEXT = 'message_text'
+RESPONSE = 'response'
+ERROR = 'error'
