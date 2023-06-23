@@ -233,3 +233,24 @@
 2023-06-22 21:53:47,432 INFO client.py Получено сообщение от пользователя элли:
 hi
 2023-06-22 21:55:52,547 INFO client.py Function main with parameters ()was called from function <module>
+2023-06-22 22:50:12,332 INFO chat.py Полёт нормальный
+2023-06-22 22:50:12,355 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 22:50:12,359 INFO client.py Function get_client_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 22:50:12,366 INFO client.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 22:50:21,006 INFO client.py Function creating_message with parameters ('presence', <socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 36688), raddr=('127.0.0.1', 7777)>, '1')was called from function main
+2023-06-22 22:50:21,007 INFO client.py Function send_data with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 36688), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1687459821.0051131, 'account_name': '1'})was called from function main
+2023-06-22 22:50:21,371 INFO client.py Function get_data with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 36688), raddr=('127.0.0.1', 7777)>,)was called from function main
+2023-06-22 22:50:32,062 INFO chat.py Полёт нормальный
+2023-06-22 22:50:32,074 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 22:50:32,076 INFO client.py Function get_client_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 22:50:32,076 INFO client.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 22:50:34,006 INFO client.py Function creating_message with parameters ('presence', <socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 40592), raddr=('127.0.0.1', 7777)>, '2')was called from function main
+2023-06-22 22:50:34,007 INFO client.py Function send_data with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 40592), raddr=('127.0.0.1', 7777)>, {'action': 'presence', 'time': 1687459834.0061142, 'account_name': '2'})was called from function main
+2023-06-22 22:50:34,079 INFO client.py Function get_data with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 40592), raddr=('127.0.0.1', 7777)>,)was called from function main
+2023-06-22 22:50:51,498 INFO client.py Function creating_message with parameters ('message', <socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 36688), raddr=('127.0.0.1', 7777)>, '1')was called from function dialogue_with_user
+2023-06-22 22:50:51,499 INFO client.py Function send_data with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 36688), raddr=('127.0.0.1', 7777)>, {'action': 'message', 'from': '1', 'to': '2', 'time': 1687459851.4928484, 'message_text': 'why'})was called from function dialogue_with_user
+2023-06-22 22:50:52,101 INFO client.py Function get_data with parameters (<socket.socket fd=4, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 40592), raddr=('127.0.0.1', 7777)>,)was called from function process
+2023-06-22 22:50:52,101 INFO client.py Получено сообщение от пользователя 1:
+why
+2023-06-22 22:54:01,285 INFO client.py Function main with parameters ()was called from function <module>
+2023-06-22 22:54:01,583 INFO client.py Function main with parameters ()was called from function <module>

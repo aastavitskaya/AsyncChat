@@ -239,3 +239,18 @@
 2023-06-22 21:53:47,431 INFO server.py Function send_data with parameters (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 41226)>, {'action': 'message', 'from': 'элли', 'to': 'abby', 'time': 1687456427.2487347, 'message_text': 'hi'})was called from function process
 2023-06-22 21:53:47,432 INFO server.py Отправлено сообщение пользователю abby от пользователя элли.
 2023-06-22 21:55:49,554 INFO server.py Клиент ('127.0.0.1', 41226) отключился от сервера. Expecting value: line 1 column 1 (char 0)
+2023-06-22 22:50:07,040 INFO chat.py Полёт нормальный
+2023-06-22 22:50:07,054 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-22 22:50:07,059 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-22 22:50:07,059 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-22 22:50:07,060 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-06-22 22:50:12,356 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 36688)
+2023-06-22 22:50:21,370 INFO server.py Function get_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 36688)>,)was called from function main
+2023-06-22 22:50:21,371 INFO server.py Function send_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 36688)>, {'response': 200})was called from function process
+2023-06-22 22:50:32,075 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 40592)
+2023-06-22 22:50:34,077 INFO server.py Function get_data with parameters (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 40592)>,)was called from function main
+2023-06-22 22:50:34,079 INFO server.py Function send_data with parameters (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 40592)>, {'response': 200})was called from function process
+2023-06-22 22:50:52,097 INFO server.py Function get_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 36688)>,)was called from function main
+2023-06-22 22:50:52,098 INFO server.py Клиент ('127.0.0.1', 36688) отключился от сервера. argument of type 'NoneType' is not iterable
+2023-06-22 22:50:52,099 INFO server.py Function send_data with parameters (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 40592)>, {'action': 'message', 'from': '1', 'to': '2', 'time': 1687459851.4928484, 'message_text': 'why'})was called from function process
+2023-06-22 22:50:52,099 INFO server.py Отправлено сообщение пользователю 2 от пользователя 1.
