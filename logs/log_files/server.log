@@ -54,3 +54,8 @@
 2023-06-27 12:03:52,751 INFO server.py Клиент ('127.0.0.1', 54628) отключился от сервера. Expecting value: line 1 column 1 (char 0)
 2023-06-27 12:06:41,517 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 41114)
 2023-06-27 12:06:50,534 INFO server.py Клиент ('127.0.0.1', 41114) отключился от сервера. Expecting value: line 1 column 1 (char 0)
+2023-06-27 12:13:20,347 INFO chat.py Полёт нормальный
+2023-06-27 12:13:20,359 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-06-27 12:13:20,362 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-06-27 12:13:20,364 INFO server.py Function create_socket with parameters ()was called from function <module>
+2023-06-27 12:13:20,364 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection

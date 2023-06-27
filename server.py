@@ -6,9 +6,10 @@ from jim import ACTION, RESPONSE, PRESENCE, TIME, ACCOUNT_NAME, \
 from chat import Log, Chat
 from socket import *
 from meta import ServerVerifier
-
+from descrip import Port
 
 class Server(Chat, metaclass = ServerVerifier):
+    port = Port()
 
     def __init__(self):
         super().__init__()
