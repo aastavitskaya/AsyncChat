@@ -66,19 +66,19 @@ class Chat:
 
 
     
-class BaseServer(Chat):
-    @Log()
-    def get_server_socket(self, addr, port):
-        s = socket(AF_INET, SOCK_STREAM)
-        s.bind((addr, port))
-        s.listen(CONNECTIONS)
-        s.settimeout(TIMEOUT)
-        return s
+# class BaseServer(Chat, metaclass = ServerMaker) :
+#     @Log()
+#     def get_server_socket(self, addr, port):
+#         s = socket(AF_INET, SOCK_STREAM)
+#         s.bind((addr, port))
+#         s.listen(CONNECTIONS)
+#         s.settimeout(TIMEOUT)
+#         return s
 
-class BaseClient(Chat):
-    @Log()
-    def get_client_socket(self, addr, port):
-        s = socket(AF_INET, SOCK_STREAM)
-        s.connect((addr, port))
-        return s
+# class BaseClient(Chat):
+#     @Log()
+#     def get_client_socket(self, addr, port):
+#         s = socket(AF_INET, SOCK_STREAM)
+#         s.connect((addr, port))
+#         return s
     

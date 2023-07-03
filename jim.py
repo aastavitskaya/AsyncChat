@@ -53,3 +53,11 @@ EXIT = 'exit'
 MESSAGE_TEXT = 'message_text'
 RESPONSE = 'response'
 ERROR = 'error'
+
+ADDRESS = 'localhost'
+PORT = 7777
+CONNECTIONS = 10
+BYTES = 1024
+TIMEOUT = 1.0
+
+VERIFICATION_PARAMS = ("accept", "listen", "connect", "AF_INET", "SOCK_STREAM")

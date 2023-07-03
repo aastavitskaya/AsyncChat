@@ -1,15 +1,17 @@
 import threading
 import time
 import sys
+from socket import *
 from json import JSONDecodeError
 from logs.config_client_log import LOGGER
-from chat import BaseClient
+from chat import Chat
 from jim import ACTION, PRESENCE, RESPONSE, EXIT, ERROR, TIME, ACCOUNT_NAME, \
     MESSAGE, MESSAGE_TEXT, SENDER, DESTINATION
 from chat import Log
+from meta import ClientVerifier
 
-
-class Client(BaseClient):
+class Client(Chat, metaclass = ClientVerifier):
+    
     def __init__(self, account_name=None):
         super().__init__()
         self.name = account_name
@@ -17,7 +19,11 @@ class Client(BaseClient):
                     'help - получение справки по командам.\n' \
                     'message - отправить сообщение.\n' \
                     'exit - выход из программы'
-
+    @Log()
+    def get_client_socket(self, addr, port):
+        s = socket(AF_INET, SOCK_STREAM)
+        s.connect((addr, port))
+        return s
     @Log()
     def create_socket(self):
         namespace = self.parser.parse_args()

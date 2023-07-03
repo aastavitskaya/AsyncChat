@@ -1,18 +1,30 @@
 from select import select
-from collections import deque
 from logs.config_server_log import LOGGER
-from chat import BaseServer
+# from chat import BaseServer
 from jim import ACTION, RESPONSE, PRESENCE, TIME, ACCOUNT_NAME, \
-    ERROR, MESSAGE, SENDER, MESSAGE_TEXT, DESTINATION, EXIT
-from chat import Log
+    ERROR, MESSAGE, SENDER, MESSAGE_TEXT, DESTINATION, EXIT, CONNECTIONS, TIMEOUT
+from chat import Log, Chat
+from socket import *
+from meta import ServerVerifier
+from descrip import Port
 
-class Server(BaseServer):
+class Server(Chat, metaclass = ServerVerifier):
+    port = Port()
+
     def __init__(self):
         super().__init__()
         self.clients = []
         self.messages = []
         self.names = {}
-
+        
+    @Log()
+    def get_server_socket(self, addr, port):
+        s = socket(AF_INET, SOCK_STREAM)
+        s.bind((addr, port))
+        s.listen(CONNECTIONS)
+        s.settimeout(TIMEOUT)
+        return s
+    
     @Log()
     def create_socket(self):
         namespace = self.parser.parse_args()
