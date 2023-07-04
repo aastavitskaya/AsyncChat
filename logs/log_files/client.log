@@ -302,3 +302,5 @@ hhtdrsxjtu
 2023-06-27 12:06:41,508 INFO chat.py Function create_parser with parameters ()was called from function __init__
 2023-06-27 12:06:41,512 INFO client.py Function get_client_socket with parameters ('localhost', 7777)was called from function create_socket
 2023-06-27 12:06:41,512 INFO client.py Function create_socket with parameters ()was called from function <module>
+2023-07-04 12:04:10,591 INFO chat.py Полёт нормальный
+2023-07-04 12:04:10,597 INFO chat.py Function create_parser with parameters ()was called from function __init__

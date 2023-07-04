@@ -1,61 +1,20 @@
-2023-06-26 21:53:28,742 INFO chat.py Полёт нормальный
-2023-06-26 21:53:28,755 INFO chat.py Function create_parser with parameters ()was called from function __init__
-2023-06-26 21:53:28,757 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
-2023-06-26 21:53:28,757 INFO server.py Function create_socket with parameters ()was called from function <module>
-2023-06-26 21:53:28,758 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
-2023-06-26 22:22:06,078 INFO chat.py Полёт нормальный
-2023-06-26 22:22:06,087 INFO chat.py Function create_parser with parameters ()was called from function __init__
-2023-06-26 22:22:06,089 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
-2023-06-26 22:22:06,090 INFO server.py Function create_socket with parameters ()was called from function <module>
-2023-06-26 22:22:06,090 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
-2023-06-26 22:22:42,030 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 58656)
-2023-06-26 22:22:46,035 INFO server.py Function get_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 58656)>,)was called from function main
-2023-06-26 22:22:46,036 INFO server.py Function send_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 58656)>, {'response': 200})was called from function process
-2023-06-26 22:23:22,209 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 54308)
-2023-06-26 22:23:26,214 INFO server.py Function get_data with parameters (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 54308)>,)was called from function main
-2023-06-26 22:23:26,216 INFO server.py Function send_data with parameters (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 54308)>, {'response': 200})was called from function process
-2023-06-26 22:23:41,234 INFO server.py Function get_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 58656)>,)was called from function main
-2023-06-26 22:23:41,237 INFO server.py Клиент ('127.0.0.1', 58656) отключился от сервера. argument of type 'NoneType' is not iterable
-2023-06-26 22:23:41,239 INFO server.py Function send_data with parameters (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 54308)>, {'action': 'message', 'from': 'dghfhj', 'to': '2', 'time': 1687803821.1742601, 'message_text': 'wtf'})was called from function process
-2023-06-26 22:23:41,239 INFO server.py Отправлено сообщение пользователю 2 от пользователя dghfhj.
-2023-06-26 22:30:34,689 INFO server.py Клиент ('127.0.0.1', 54308) отключился от сервера. Expecting value: line 1 column 1 (char 0)
-2023-06-27 10:55:10,622 INFO chat.py Полёт нормальный
-2023-06-27 10:55:10,637 INFO chat.py Function create_parser with parameters ()was called from function __init__
-2023-06-27 11:05:51,480 INFO chat.py Полёт нормальный
-2023-06-27 11:05:51,500 INFO chat.py Function create_parser with parameters ()was called from function __init__
-2023-06-27 11:05:51,506 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
-2023-06-27 11:05:51,513 INFO server.py Function create_socket with parameters ()was called from function <module>
-2023-06-27 11:05:51,515 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
-2023-06-27 11:09:50,586 INFO chat.py Полёт нормальный
-2023-06-27 11:09:50,596 INFO chat.py Function create_parser with parameters ()was called from function __init__
-2023-06-27 11:09:50,598 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
-2023-06-27 11:09:50,598 INFO server.py Function create_socket with parameters ()was called from function <module>
-2023-06-27 11:09:50,599 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
-2023-06-27 11:10:24,067 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 55936)
-2023-06-27 11:10:27,073 INFO server.py Function get_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 55936)>,)was called from function main
-2023-06-27 11:10:27,075 INFO server.py Function send_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 55936)>, {'response': 200})was called from function process
-2023-06-27 11:10:36,959 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 53920)
-2023-06-27 11:10:39,964 INFO server.py Function get_data with parameters (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 53920)>,)was called from function main
-2023-06-27 11:10:39,965 INFO server.py Function send_data with parameters (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 53920)>, {'response': 200})was called from function process
-2023-06-27 11:10:58,985 INFO server.py Function get_data with parameters (<socket.socket fd=6, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 53920)>,)was called from function main
-2023-06-27 11:10:58,985 INFO server.py Клиент ('127.0.0.1', 53920) отключился от сервера. argument of type 'NoneType' is not iterable
-2023-06-27 11:10:58,987 INFO server.py Function send_data with parameters (<socket.socket fd=5, family=AddressFamily.AF_INET, type=SocketKind.SOCK_STREAM, proto=0, laddr=('127.0.0.1', 7777), raddr=('127.0.0.1', 55936)>, {'action': 'message', 'from': '2', 'to': '1', 'time': 1687849858.9117746, 'message_text': 'hhtdrsxjtu'})was called from function process
-2023-06-27 11:10:58,988 INFO server.py Отправлено сообщение пользователю 1 от пользователя 2.
-2023-06-27 11:11:51,971 INFO chat.py Полёт нормальный
-2023-06-27 11:11:51,989 INFO chat.py Function create_parser with parameters ()was called from function __init__
-2023-06-27 11:12:03,256 INFO chat.py Полёт нормальный
-2023-06-27 11:12:03,274 INFO chat.py Function create_parser with parameters ()was called from function __init__
-2023-06-27 11:44:21,452 INFO chat.py Полёт нормальный
-2023-06-27 11:44:21,473 INFO chat.py Function create_parser with parameters ()was called from function __init__
-2023-06-27 11:44:21,476 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
-2023-06-27 11:44:21,478 INFO server.py Function create_socket with parameters ()was called from function <module>
-2023-06-27 11:44:21,478 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
-2023-06-27 11:58:08,390 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 54628)
-2023-06-27 12:03:52,751 INFO server.py Клиент ('127.0.0.1', 54628) отключился от сервера. Expecting value: line 1 column 1 (char 0)
-2023-06-27 12:06:41,517 INFO server.py Установлено соединение с клиентом ('127.0.0.1', 41114)
-2023-06-27 12:06:50,534 INFO server.py Клиент ('127.0.0.1', 41114) отключился от сервера. Expecting value: line 1 column 1 (char 0)
-2023-06-27 12:13:20,347 INFO chat.py Полёт нормальный
-2023-06-27 12:13:20,359 INFO chat.py Function create_parser with parameters ()was called from function __init__
-2023-06-27 12:13:20,362 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
-2023-06-27 12:13:20,364 INFO server.py Function create_socket with parameters ()was called from function <module>
-2023-06-27 12:13:20,364 INFO server.py Server starts on ('127.0.0.1', 7777) and waits connection
+2023-07-04 11:59:39,978 INFO chat.py Полёт нормальный
+2023-07-04 11:59:40,000 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-04 12:02:46,248 INFO chat.py Полёт нормальный
+2023-07-04 12:02:46,272 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-04 12:03:07,797 INFO chat.py Полёт нормальный
+2023-07-04 12:03:07,818 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-04 12:06:18,203 INFO chat.py Полёт нормальный
+2023-07-04 12:06:18,219 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-04 12:08:19,311 INFO chat.py Полёт нормальный
+2023-07-04 12:08:19,327 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-04 12:08:19,329 INFO chat.py Полёт нормальный
+2023-07-04 12:08:19,330 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-04 12:08:41,435 INFO chat.py Полёт нормальный
+2023-07-04 12:08:41,455 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-04 12:08:41,456 INFO chat.py Полёт нормальный
+2023-07-04 12:08:41,458 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-04 12:13:01,731 INFO chat.py Полёт нормальный
+2023-07-04 12:13:01,751 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-04 12:13:01,753 INFO chat.py Полёт нормальный
+2023-07-04 12:13:01,754 INFO chat.py Function create_parser with parameters ()was called from function __init__
