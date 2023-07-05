@@ -3,7 +3,6 @@ from datetime import datetime
 from pony.orm import Required, Optional, Database, Set, set_sql_debug, db_session
 
 
-
 class Storage:
     db = Database()
 
@@ -14,10 +13,8 @@ class Storage:
         is_active = Required(bool, default=True)
 
         history = Set(lambda: Storage.ClientHistory)
-        contacts = Set(lambda: Storage.ContactsList, reverse="client_id")
-        user = Optional(
-            lambda: Storage.ContactsList,
-        )
+        contacts = Set(lambda: Storage.ContactsList, reverse="owner_id")
+        client = Optional(lambda: Storage.ContactsList)
 
     class ClientHistory(db.Entity):
         _table_ = "clients history"
