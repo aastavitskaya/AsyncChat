@@ -1,3 +1,4 @@
+import threading
 from select import select
 from logs.config_server_log import LOGGER
 # from chat import BaseServer
@@ -7,16 +8,18 @@ from chat import Log, Chat
 from socket import *
 from meta import ServerVerifier
 from descrip import Port
+from models import Storage
 
 class Server(Chat, metaclass = ServerVerifier):
     port = Port()
 
-    def __init__(self):
+    def __init__(self, db):
         super().__init__()
         self.clients = []
         self.messages = []
         self.names = {}
         
+        super().__init__()
     @Log()
     def get_server_socket(self, addr, port):
         s = socket(AF_INET, SOCK_STREAM)
@@ -92,7 +95,8 @@ class Server(Chat, metaclass = ServerVerifier):
     #                 all_clients.remove(sock)
 
     @Log()
-    def main(self):
+    def run(self):
+        
         LOGGER.info(
             f'Server starts on {self.socket.getsockname()} and waits connection'
         )
@@ -135,9 +139,13 @@ class Server(Chat, metaclass = ServerVerifier):
                                        f' отключился от сервера.')
                     self.clients.remove(client_with_error)
 
+def main():
+    db = Storage()
 
+    runner = Server(db=db)
+    server = threading.Thread(target=runner.run)
+    server.daemon = True
+    server.start()
 
 if __name__ == '__main__':
-    server = Server()
-    server.create_socket()
-    server.main()
+    main()
