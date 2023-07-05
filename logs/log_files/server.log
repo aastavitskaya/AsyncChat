@@ -18,3 +18,37 @@
 2023-07-04 12:13:01,751 INFO chat.py Function create_parser with parameters ()was called from function __init__
 2023-07-04 12:13:01,753 INFO chat.py Полёт нормальный
 2023-07-04 12:13:01,754 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:46:10,811 INFO chat.py Полёт нормальный
+2023-07-05 22:46:10,826 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:46:10,828 INFO chat.py Полёт нормальный
+2023-07-05 22:46:10,829 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:47:29,703 INFO chat.py Полёт нормальный
+2023-07-05 22:47:29,725 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:47:29,727 INFO chat.py Полёт нормальный
+2023-07-05 22:47:29,728 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:50:16,350 INFO chat.py Полёт нормальный
+2023-07-05 22:50:16,370 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:50:16,372 INFO chat.py Полёт нормальный
+2023-07-05 22:50:16,372 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:52:25,345 INFO chat.py Полёт нормальный
+2023-07-05 22:52:25,364 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:52:25,367 INFO chat.py Полёт нормальный
+2023-07-05 22:52:25,368 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:53:42,169 INFO chat.py Полёт нормальный
+2023-07-05 22:53:42,187 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:53:42,189 INFO chat.py Полёт нормальный
+2023-07-05 22:53:42,191 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:55:05,497 INFO chat.py Полёт нормальный
+2023-07-05 22:55:05,515 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:55:05,518 INFO chat.py Полёт нормальный
+2023-07-05 22:55:05,520 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:57:43,688 INFO chat.py Полёт нормальный
+2023-07-05 22:57:43,708 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:57:43,709 INFO chat.py Полёт нормальный
+2023-07-05 22:57:43,710 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:59:00,242 INFO chat.py Полёт нормальный
+2023-07-05 22:59:00,264 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:59:00,265 INFO chat.py Полёт нормальный
+2023-07-05 22:59:00,266 INFO chat.py Function create_parser with parameters ()was called from function __init__
+2023-07-05 22:59:00,491 INFO server.py Function get_server_socket with parameters ('localhost', 7777)was called from function create_socket
+2023-07-05 22:59:00,492 INFO server.py Function create_socket with parameters ()was called from function main

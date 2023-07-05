@@ -1,14 +1,19 @@
 import threading
+import sys
+import os
 from select import select
+from PyQt6 import QtWidgets
 from logs.config_server_log import LOGGER
-# from chat import BaseServer
+from gui.server import UiMainWindow
+
 from jim import ACTION, RESPONSE, PRESENCE, TIME, ACCOUNT_NAME, \
     ERROR, MESSAGE, SENDER, MESSAGE_TEXT, DESTINATION, EXIT, CONNECTIONS, TIMEOUT
 from chat import Log, Chat
 from socket import *
 from meta import ServerVerifier
 from descrip import Port
-from models import Storage
+from models import Storage, DB_FILE_NAME
+
 
 class Server(Chat, metaclass = ServerVerifier):
     port = Port()
@@ -32,6 +37,7 @@ class Server(Chat, metaclass = ServerVerifier):
     def create_socket(self):
         namespace = self.parser.parse_args()
         self.socket = self.get_server_socket(namespace.addr, namespace.port)
+        return namespace.addr
 
     def process(self, message, client=None, listen_socks=None):
         LOGGER.debug(f'Разбор сообщения {message} от клиента')
@@ -72,27 +78,6 @@ class Server(Chat, metaclass = ServerVerifier):
             self.send_data(client, {RESPONSE: 400, ERROR: 'Bad Request'})
             return
 
-    # @Log()
-    # def check_requests(self, recv_data_clients_list, all_clients):
-    #     for sock in recv_data_clients_list:
-    #         try:
-    #             message = self.get_data(sock)
-    #             self.messages.append(message)
-    #         except:
-    #             LOGGER.info(f'Client {sock.getpeername()} disconnected')
-    #             all_clients.remove(sock)
-
-    # @Log()
-    # def write_responses(self, send_data_clients_list, all_clients):
-    #     while self.messages:
-    #         message = self.messages.popleft()
-    #         for sock in send_data_clients_list:
-    #             try:
-    #                 self.send_data(sock, message)
-    #             except:
-    #                 LOGGER.info(f'Client {sock.getpeername()} disconnected')
-    #                 sock.close()
-    #                 all_clients.remove(sock)
 
     @Log()
     def run(self):
@@ -146,6 +131,28 @@ def main():
     server = threading.Thread(target=runner.run)
     server.daemon = True
     server.start()
+
+    app = QtWidgets.QApplication(sys.argv)
+    MainWindow = QtWidgets.QMainWindow()
+    gui = UiMainWindow()
+    gui.setupUi(MainWindow)
+    gui.users.setModel(gui.get_all_users(db))
+    gui.users.resizeColumnsToContents()
+    gui.history.setModel(gui.get_all_history(db))
+    gui.history.resizeColumnsToContents()
+    gui.pushButton.pressed.connect(
+        lambda db=db: gui.users.setModel(gui.get_all_users(db))
+    )
+    gui.pushButton_3.pressed.connect(
+        lambda db=db: gui.history.setModel(gui.get_all_history(db))
+    )
+    sock = runner.create_socket()
+    gui.get_settings(os.path.join(os.getcwd(), DB_FILE_NAME), sock)
+    MainWindow.show()
+    sys.exit(app.exec())
+
+
+
 
 if __name__ == '__main__':
     main()
