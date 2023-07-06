@@ -9,11 +9,13 @@ from jim import ACTION, PRESENCE, RESPONSE, EXIT, ERROR, TIME, ACCOUNT_NAME, \
     MESSAGE, MESSAGE_TEXT, SENDER, DESTINATION
 from chat import Log
 from meta import ClientVerifier
+from models import ClientDBase
 
 class Client(Chat, metaclass = ClientVerifier):
     
     def __init__(self, account_name=None):
         super().__init__()
+        self.lock = threading.Lock()
         self.name = account_name
         self.help = 'Доступные команды:\n' \
                     'help - получение справки по командам.\n' \
@@ -120,6 +122,7 @@ class Client(Chat, metaclass = ClientVerifier):
             LOGGER.debug('Отправлено приветственное сообщение на сервер')
             answer = self.response(self.get_data(self.socket))
             print(answer)
+            self.db = ClientDBase(self.name)
         except ConnectionRefusedError:
             LOGGER.critical(f'Не удалось подключиться к серверу {self.address}:{self.port},'
                                    f' конечный компьютер отверг запрос на подключение.')
