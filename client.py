@@ -1,126 +1,80 @@
+import sys
 import threading
 import time
-import sys
-from socket import *
-from json import JSONDecodeError
-from logs.config_client_log import LOGGER
-from chat import Chat
-from jim import ACTION, PRESENCE, RESPONSE, EXIT, ERROR, TIME, ACCOUNT_NAME, \
-    MESSAGE, MESSAGE_TEXT, SENDER, DESTINATION
-from chat import Log
-from meta import ClientVerifier
-from models import ClientDBase
+from socket import AF_INET, SOCK_STREAM, socket
 
-class Client(Chat, metaclass = ClientVerifier):
-    
-    def __init__(self, account_name=None):
-        super().__init__()
+from app.config import DEFAULT_PORT, TIMEOUT
+from app.utils import Chat, BaseVerifier
+from app.client_utils import MessageHandlerMixin
+from app.models import ClientDBase
+from log.settings.client_log_config import logger
+from log.settings.decor_log_config import Log
+
+
+class ClientVerifier(BaseVerifier):
+    def __init__(cls, name, bases, namespaces):
+        super().__init__(name, bases, namespaces)
+
+        for attr in namespaces.values():
+            if isinstance(attr, socket):
+                raise TypeError("Socket shouldn't be created at class level")
+
+        params = cls.attrs[f"_{name}_attrs"]
+        if "accept" in params or "listen" in params:
+            raise TypeError("Accept or listen methods are not allowed")
+
+
+class Client(Chat, MessageHandlerMixin, metaclass=ClientVerifier):
+    def __init__(self):
         self.lock = threading.Lock()
-        self.name = account_name
-        self.help = 'Доступные команды:\n' \
-                    'help - получение справки по командам.\n' \
-                    'message - отправить сообщение.\n' \
-                    'exit - выход из программы'
+        self.username = None
+
     @Log()
-    def get_client_socket(self, addr, port):
-        s = socket(AF_INET, SOCK_STREAM)
-        s.connect((addr, port))
-        return s
+    def create_message(self, **kwargs):
+        logger.info(f"Creating message from user {self.username}")
+        return self.template_message(user_login=self.username, **kwargs)
+
     @Log()
-    def create_socket(self):
-        namespace = self.parser.parse_args()
-        self.socket = self.get_client_socket(
-            namespace.addr, namespace.port)
-        
+    def presence(self):
+        logger.info(f"Creating precense message")
+        return self.create_message(action="presence")
+
+    @property
     @Log()
-    def creating_message(self, action, sock, account_name):
-        message = None
-        if action == PRESENCE:
-            message = {
-                ACTION: action,
-                TIME: time.time(),
-                ACCOUNT_NAME: account_name
-            }
-            LOGGER.debug(f'Сформировано {PRESENCE} сообщение от пользователя {account_name}')
-        elif action == MESSAGE:
-            to_user = input('Введите получателя сообщения: ')
-            message_text = input('Введите сообщение для отправки или отправьте пустое сообщение'
-                                ' для завершения работы: ')
-            if not message_text:
-                sock.close()
-                LOGGER.info('Завершение работы по команде пользователя.')
-                exit(0)
-            message = {
-                ACTION: action,
-                SENDER: account_name,
-                DESTINATION: to_user,
-                TIME: time.time(),
-                MESSAGE_TEXT: message_text
-            }
-            LOGGER.debug(f'Сформировано сообщение : {message} для пользователя {to_user}')
-        elif action == EXIT:
-            message = {
-                ACTION: action,
-                TIME: time.time(),
-                ACCOUNT_NAME: account_name
-            }
-        return message
-    
-    def response(self, message):
-        LOGGER.debug(f'Разбор сообщения {message} от сервера')
-        if RESPONSE in message:
-            if message[RESPONSE] == 200:
-                return 'Соединение установлено'
-            return f'Ошибка соединения с сервером: {message[ERROR]}'
-        LOGGER.error('Неверный формат сообщения от сервера')
-        raise ValueError
-    
-    def process(self, sock, name):
-        while True:
-            try:
-                message = self.get_data(sock)
-                LOGGER.debug(f'Разбор сообщения {message} от сервера')
-                if ACTION in message and message[ACTION] == MESSAGE and SENDER in message \
-                        and DESTINATION in message and MESSAGE_TEXT in message \
-                        and message[DESTINATION] == name:
-                    print(f'Получено сообщение от пользователя '
-                          f'{message[SENDER]}:\n{"-" * 50}\n{message[MESSAGE_TEXT]}')
-                    LOGGER.info(f'Получено сообщение от пользователя'
-                                       f' {message[SENDER]}:\n{message[MESSAGE_TEXT]}')
-                else:
-                    LOGGER.error(f'Получено некорректное сообщение с сервера: {message}')
-            except (OSError, ConnectionError, ConnectionAbortedError,
-                    ConnectionResetError):
-                LOGGER.critical('Потеряно соединение с сервером.')
-                break
-    
+    def parse_params(self):
+        params = sys.argv
+        port = int(params[2]) if len(params) > 2 else DEFAULT_PORT
+        address = params[1]
+        logger.info(f"Address: {address} and port: {port} from CLI")
+        return address, port
+
     @Log()
-    def dialogue_with_user(self, sock, user_name):
-        print('Добро пожаловать в программу для общения по сети.')
-        while True:
-            command = input(f'{user_name}, введите команду. Help - вывести список команд:\n ').lower()
-            if command == 'help':
-                print(self.help)
-            elif command == 'message':
-                self.send_data(sock, self.creating_message(MESSAGE, sock, user_name))
-            elif command == 'exit':
-                self.send_data(sock, self.creating_message(EXIT, sock, user_name))
-                print('Завершение соединения.')
-                LOGGER.info('Завершение работы по команде пользователя.')
-                time.sleep(0.5)
-                break
-            else:
-                print('Команда не распознана, попробуйте снова.')
-                print(self.help)
+    def connect_socket(self):
+        sock = socket(AF_INET, SOCK_STREAM)
+        address, port = self.parse_params
+        sock.connect((address, port))
+        logger.info(f"Connection to server {address}:{port} was succefully created")
+        return sock
+
+    @Log()
+    def run(self):
+        try:
+            self.sock = self.connect_socket()
+        except Exception:
+            logger.critical(
+                f"Achtung!!! Ein kritischer Fehler wurde bemerkt! Was ist los? {self.get_error}"
+            )
+            sys.exit(1)
+
     @Log()
     def recieve_message(self):
         try:
             message = self.get_message(self.sock)
         except Exception:
-            LOGGER.critical("Fatal error by recieving message")
+            logger.critical("Fatal error by recieving message")
             sys.exit(1)
         else:
-            LOGGER.info(f"Recieved message {message}")
+            logger.info(f"Recieved message {message}")
             return self.parse_message(message)
 
     @Log()
@@ -173,37 +127,24 @@ class Client(Chat, metaclass = ClientVerifier):
             print(message)
 
     @Log()
-    def main(self):
-        if not self.name:
-            self.name = input('Введите имя пользователя: ')
-        try:
-            presence_message = self.creating_message(PRESENCE, self.socket, self.name)
-            self.send_data(self.socket, presence_message)
-            LOGGER.debug('Отправлено приветственное сообщение на сервер')
-            answer = self.response(self.get_data(self.socket))
-            print(answer)
-            self.db = ClientDBase(self.name)
-        except ConnectionRefusedError:
-            LOGGER.critical(f'Не удалось подключиться к серверу {self.address}:{self.port},'
-                                   f' конечный компьютер отверг запрос на подключение.')
-            exit(1)
-        except JSONDecodeError:
-            LOGGER.error('Ошибка декодирования сообщения.')
-            exit(1)
-        else:
-            sender = threading.Thread(target=self.dialogue_with_user, args=(self.socket, self.name))
-            sender.daemon = True
-            sender.start()
-            receiver = threading.Thread(target=self.process, args=(self.socket, self.name))
-            receiver.daemon = True
-            receiver.start()
-            while True:
-                time.sleep(1)
-                if receiver.is_alive() and sender.is_alive():
-                    continue
-                break
+    def main_loop(self):
+        transmitter = threading.Thread(target=self.outgoing)
+        transmitter.daemon = True
+        transmitter.start()
 
-if __name__ == '__main__':
+        reciever = threading.Thread(target=self.incomming)
+        reciever.daemon = True
+        reciever.start()
+
+        while True:
+            time.sleep(TIMEOUT)
+            if transmitter.is_alive() and reciever.is_alive():
+                continue
+            break
+
+
+if __name__ == "__main__":
     client = Client()
-    client.create_socket()
-    client.main()
+    client.run()
+    client.set_username()
+    client.main_loop()

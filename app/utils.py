@@ -4,7 +4,7 @@ import random
 import dis
 from types import FunctionType
 
-from jim import BYTES, ERROR, VERIFICATION_PARAMS
+from app.config import MAX_PACKAGE_LENGTH, ENCODING, ERRORS, VERIFICATION_PARAMS
 
 
 class BaseVerifier(type):
@@ -42,12 +42,12 @@ class BaseVerifier(type):
 class Chat:
     @staticmethod
     def get_message(sock):
-        response = sock.recv(BYTES).decode('utf-8')
+        response = sock.recv(MAX_PACKAGE_LENGTH).decode(ENCODING)
         return json.loads(response)
 
     @staticmethod
     def send_message(sock, message):
-        message = json.dumps(message).encode('utf-8')
+        message = json.dumps(message).encode(ENCODING)
         sock.send(message)
 
     @staticmethod
@@ -59,4 +59,4 @@ class Chat:
 
     @property
     def get_error(self):
-        return ERROR
+        return random.choice(ERRORS)

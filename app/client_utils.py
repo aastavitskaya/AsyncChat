@@ -1,12 +1,14 @@
 from http import HTTPStatus
 
-from logs.config_client_log import LOGGER
+from log import LoggerProxy
 
+proxy = LoggerProxy("client")
+logger = proxy.get_logger()
 
 
 class MessageHandlerMixin:
     def parse_message(self, message):
-        LOGGER.info(f"Parsing messagefrom server: {message}")
+        logger.info(f"Parsing messagefrom server: {message}")
 
         if message["action"] == "login":
             return message["username_status"]
