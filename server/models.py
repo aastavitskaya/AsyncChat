@@ -1,9 +1,17 @@
 from datetime import datetime
 
-from pony.orm import Required, Optional, Database, Set, set_sql_debug, db_session, delete
+from pony.orm import (
+    Required,
+    Optional,
+    Database,
+    Set,
+    set_sql_debug,
+    db_session,
+    delete,
+)
+from config.settigs import DEBUG, DEFAULT_PORT, DB_FILE_NAME
 
-DEFAULT_PORT = 7777
-DB_FILE_NAME = "db.sqlite3"
+
 class Storage:
     db = Database()
 
@@ -15,15 +23,16 @@ class Storage:
 
         history = Set(lambda: Storage.ClientHistory)
         contacts = Set(lambda: Storage.ContactsList, reverse="owner_id")
-        client = Optional(lambda: Storage.ContactsList)
+        client = Optional(
+            lambda: Storage.ContactsList,
+        )
 
     class ClientHistory(db.Entity):
         _table_ = "clients history"
+        client_id = Required(lambda: Storage.Client)
         entry_date = Required(datetime)
         ip_address = Required(str)
         port = Required(int)
-
-        client_id = Required(lambda: Storage.Client)
 
     class ContactsList(db.Entity):
         _table_ = "contacts list"
@@ -32,7 +41,7 @@ class Storage:
 
     def __init__(self):
         self.db.bind(provider="sqlite", filename=f"../{DB_FILE_NAME}", create_db=True)
-        set_sql_debug(True)
+        set_sql_debug(DEBUG)
         self.db.generate_mapping(create_tables=True)
 
     @db_session
@@ -98,8 +107,22 @@ class Storage:
         )
 
     @db_session
-    def get_all_clients(self):
+    def get_all_users(self):
         return self.Client.select()[:]
+
+    @db_session
+    def get_all_clients(self, username):
+        clients = self.Client.select()
+        contacts = self.get_contacts(username)
+        return [
+            {
+                "username": client.username,
+                "is_active": client.is_active,
+                "is_contact": True if client.username in contacts else False,
+            }
+            for client in clients
+            if client.username != username
+        ]
 
     @db_session
     def get_all_history(self):
@@ -114,77 +137,6 @@ class Storage:
         ]
 
 
-class ClientDBase:
-    db = Database()
-
-    class Contacts(db.Entity):
-        username = Required(str, unique=True)
-        deleted = Required(bool, default=False)
-
-    class Messages(db.Entity):
-        contact = Required(str)
-        message = Required(str)
-        date = Required(datetime)
-        recieved = Required(bool)
-        deleted = Required(bool, default=False)
-
-    def __init__(self, name):
-        self.db.bind(
-            provider="sqlite", filename=f"../{name}.{DB_FILE_NAME}", create_db=True
-        )
-        set_sql_debug(True)
-        self.db.generate_mapping(create_tables=True)
-
-    @db_session
-    def add_message(self, contact_username, message, time, recieved=True):
-        store = self.Messages(
-            contact=contact_username,
-            message=message,
-            date=datetime.fromtimestamp(time),
-            recieved=recieved,
-        )
-
-    @db_session
-    def update_contacts(self, users_list):
-        for contact in self.Contacts.select():
-            if contact.username not in users_list:
-                contact.deleted = True
-
-        contacts = {user.username: user.deleted for user in self.Contacts.select()}
-        for username in users_list:
-            if username in contacts:
-                if contacts[username] == True:
-                    user = self.Contacts.select(
-                        lambda contact: contact.username == username
-                    ).get()
-                    user.deleted = False
-            else:
-                contact = self.Contacts(username=username)
-
-    @db_session
-    def update_messages(self):
-        deleted_users = [
-            user.username
-            for user in self.Contacts.select(lambda contact: contact.deleted == True)
-        ]
-        for message in self.Messages.select(
-            lambda mes: mes.contact in deleted_users and mes.deleted == False
-        ):
-            message.deleted = True
-
-    @db_session
-    def get_contacts(self):
-        return [
-            contact.username
-            for contact in self.Contacts.select()
-            if contact.deleted == False
-        ]
-
-    @db_session
-    def get_messages(self):
-        return self.Messages.select(lambda message: message.deleted == False)[:]
-
-
 if __name__ == "__main__":
     server_db = Storage()
     server_db.activate_client("Alina")
@@ -192,17 +144,15 @@ if __name__ == "__main__":
     server_db.add_contact("Alina", "Oleg")
     print(
         "Alina has these contacts in her contacts list: ",
-        server_db.get_contacts("Alina"),)
+        server_db.get_contacts("Alina"),
+    )
+    print(
+        "Oleg has these contacts in his contacts list: ",
+        server_db.get_contacts("Oleg"),
+    )
     server_db.del_contact("Alina", "Oleg")
     server_db.del_contact("Oleg", "Alina")
     print(
         "Alina has these contacts in her contacts list: ",
-        server_db.get_contacts("Alina"),)
-    client_db = ClientDBase("pony")
-    client_db.update_contacts(["Alina", "Oleg"])
-    client_db.add_message("Alina", "hello", 1680951955.02192)
-    client_db.add_message("Oleg", "world", 1680951955.02192)
-    client_db.update_contacts(["Alina"])
-    client_db.update_messages()
-    print(client_db.get_contacts())
-    print(client_db.get_messages()[0].message)
+        server_db.get_contacts("Alina"),
+    )

@@ -6,8 +6,8 @@ import unittest
 
 sys.path.append(os.getcwd())
 
-from app.config import ERRORS, ENCODING, MAX_PACKAGE_LENGTH
-from app.utils import Chat
+from config.settigs import ERRORS, ENCODING, MAX_PACKAGE_LENGTH
+from config.utils import Chat
 
 TEST_IP = "127.0.0.1"
 

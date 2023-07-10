@@ -8,7 +8,7 @@ from socket import socket
 
 sys.path.append(os.getcwd())
 
-from app.config import DEFAULT_PORT
+from config.settigs import DEFAULT_PORT
 from server import Server
 
 

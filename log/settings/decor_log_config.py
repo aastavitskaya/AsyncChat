@@ -2,7 +2,7 @@ import os
 import sys
 import inspect
 from log import LoggerProxy
-from app.utils import Chat
+from config.utils import Chat
 
 
 class Log:
