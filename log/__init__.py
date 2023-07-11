@@ -5,7 +5,7 @@ from logging.handlers import TimedRotatingFileHandler
 
 sys.path.append(os.getcwd())
 
-from app.config import ENCODING, LOGGER_LEVEL
+from config.settigs import ENCODING, LOGGER_LEVEL
 
 
 class LoggerProxy(Logger):

@@ -1,12 +1,7 @@
 import select
 from http import HTTPStatus
 
-class PortError(Exception):
-    def __init__(self, port):
-        self.port = port
-
-    def __str__(self):
-        return f"Creartion socket on port {self.port} is impossible"
+from .exceptions import PortError
 
 
 class NamedPort:
@@ -32,30 +27,30 @@ class NamedPort:
 
 class Users:
     def __init__(self):
-        self.sockets_list = {}
-        self.usernames_list = {}
+        self.sockets_dict = {}
+        self.usernames_dict = {}
 
     @property
     def sockets(self):
-        return self.sockets_list
+        return self.sockets_dict
 
     @property
     def usernames(self):
-        return self.usernames_list
+        return self.usernames_dict
 
     def get_socket(self, username):
-        return self.sockets_list.get(self.usernames_list.get(username))
+        return self.sockets_dict.get(self.usernames_dict.get(username))
 
     def get_username(self, fileno):
-        for key, value in self.usernames_list.items():
+        for key, value in self.usernames_dict.items():
             if value == fileno:
                 return key
 
     def delete_user(self, fileno):
         username = self.get_username(fileno)
         if username:
-            del self.usernames_list[username]
-        del self.sockets_list[fileno]
+            del self.usernames_dict[username]
+        del self.sockets_dict[fileno]
 
 
 class ExchangeMessageMixin:
@@ -89,6 +84,7 @@ class ExchangeMessageMixin:
                     port=port,
                 )
                 result = "accepted"
+                self.queue.put("activated")
             else:
                 result = "rejected"
             response = self.template_message(action="login", username_status=result)
@@ -103,15 +99,9 @@ class ExchangeMessageMixin:
 
         # get_users
         elif message["action"] == "get_users":
-            users = self.db.get_all_clients()
+            users = self.db.get_all_clients(message["user_login"])
             response = self.template_message(
-                action="get_users",
-                response=HTTPStatus.ACCEPTED,
-                alert={
-                    user.username: user.is_active
-                    for user in users
-                    if message["user_login"] != user.username
-                },
+                action="get_users", response=HTTPStatus.ACCEPTED, alert=users
             )
 
         # del_contact

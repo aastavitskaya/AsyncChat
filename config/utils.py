@@ -4,7 +4,7 @@ import random
 import dis
 from types import FunctionType
 
-from app.config import MAX_PACKAGE_LENGTH, ENCODING, ERRORS, VERIFICATION_PARAMS
+from config.settigs import MAX_PACKAGE_LENGTH, ENCODING, ERRORS, VERIFICATION_PARAMS
 
 
 class BaseVerifier(type):

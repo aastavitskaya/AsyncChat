@@ -1,8 +1,7 @@
+import sys
+
 from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtGui import QStandardItem, QStandardItemModel
-
-
-from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 class UiMainWindow(object):
@@ -64,7 +63,7 @@ class UiMainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -88,7 +87,7 @@ class UiMainWindow(object):
         )
 
     def get_all_users(self, db):
-        users = db.get_all_clients()
+        users = db.get_all_users()
         table = QStandardItemModel()
         table.setHorizontalHeaderLabels(["User ID", "Username", "On-line"])
         for user in users:
@@ -127,8 +126,6 @@ class UiMainWindow(object):
 
 
 if __name__ == "__main__":
-    import sys
-
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = UiMainWindow()
