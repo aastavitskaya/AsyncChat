@@ -1,11 +1,19 @@
 import sys
+import os
 import threading
 import time
+import binascii
+import base64
+import hmac
+import hashlib
+from http import HTTPStatus
 from socket import AF_INET, SOCK_STREAM, socket
+from Crypto.Cipher import PKCS1_OAEP
+from Crypto.PublicKey import RSA
 
 from client.client_utils import MessageHandlerMixin
 from client.gui import welcome
-from config.settigs import DEFAULT_PORT, CHECK_TIMEOUT
+from config.settigs import DEFAULT_PORT, CHECK_TIMEOUT, ENCODING, ITERATIONS
 from config.utils import BaseVerifier, Chat
 from log.settings.client_log_config import logger
 from log.settings.decor_log_config import Log
@@ -28,6 +36,23 @@ class Client(Chat, MessageHandlerMixin, metaclass=ClientVerifier):
     def __init__(self):
         self.lock = threading.Lock()
         self.username = None
+        self.keys = None
+        self.db = None
+        self.public_key = None
+        self.decryptor = None
+        self.encryptor = None
+
+    @Log()
+    def request_public_key(self, username):
+        self.send_message(
+            self.sock,
+            self.create_message(
+                action="public_key_request",
+                user_id=username,
+            ),
+        )
+        public_key = self.receive_message()
+        self.encryptor = PKCS1_OAEP.new(RSA.import_key(public_key))
 
     @Log()
     def create_message(self, **kwargs):
@@ -78,54 +103,146 @@ class Client(Chat, MessageHandlerMixin, metaclass=ClientVerifier):
             return self.parse_message(message)
 
     @Log()
+    def authorisation(self, ui):
+        password = self.password.encode(ENCODING)
+        salt = self.username.encode(ENCODING)
+        password_hash = hashlib.pbkdf2_hmac("sha256", password, salt, ITERATIONS)
+        password_hash_string = binascii.hexlify(password_hash)
+        message = self.create_message(action="login")
+        self.send_message(self.sock, message)
+        response = self.receive_message()
+        if response == "rejected":
+            ui.error = f"Sorry, username {self.username} is busy :("
+            self.username = None
+        else:
+            check_hash = hmac.new(
+                password_hash_string, response.encode(ENCODING), "sha256"
+            )
+            digest = check_hash.digest()
+            digest_message = {
+                "action": "auth",
+                "response": HTTPStatus.NETWORK_AUTHENTICATION_REQUIRED,
+                "body": binascii.b2a_base64(digest).decode(ENCODING),
+            }
+            self.send_message(self.sock, self.create_message(**digest_message))
+            response = self.receive_message()
+            if response == "rejected":
+                ui.error = f"Check your credentials :("
+                self.username = None
+
+    @Log()
+    def registration(self, ui):
+        message = {
+            "action": "register",
+            "password": self.password,
+        }
+        reg_request = self.create_message(**message)
+        self.send_message(self.sock, reg_request)
+        reg_response = self.receive_message()
+        if reg_response == "accepted":
+            ui.error = f"User {self.username} created"
+        elif reg_response == "rejected":
+            ui.error = f"Sorry, username {self.username} is busy :("
+        self.username = None
+
+    @Log()
     def set_username(self, app):
         dialog = welcome.UiDialog()
         dialog.setupUi()
-        error = ""
+        dialog.error = ""
         while not self.username:
-            dialog.input_username(error)
+            dialog.input_username(dialog.error)
             app.exec()
             self.username = dialog.lineEdit.text()
-            message = self.create_message(action="login")
-            self.send_message(self.sock, message)
-            if self.receive_message() == "rejected":
-                error = f"Sorry, username {self.username} is busy :("
-                self.username = None
+            self.password = dialog.lineEdit_2.text()
+            if not dialog.new_user:
+                self.authorisation(dialog)
+                # password = self.password.encode(ENCODING)
+                # salt = self.username.encode(ENCODING)
+                # password_hash = hashlib.pbkdf2_hmac(
+                #     "sha256", password, salt, ITERATIONS
+                # )
+                # password_hash_string = binascii.hexlify(password_hash)
+                # message = self.create_message(action="login")
+                # self.send_message(self.sock, message)
+                # response = self.receive_message()
+                # if response == "rejected":
+                #     error = f"Sorry, username {self.username} is busy :("
+                #     self.username = None
+                # else:
+                #     check_hash = hmac.new(
+                #         password_hash_string, response.encode(ENCODING), "sha256"
+                #     )
+                #     digest = check_hash.digest()
+                #     digest_message = {
+                #         "action": "auth",
+                #         "response": HTTPStatus.NETWORK_AUTHENTICATION_REQUIRED,
+                #         "body": binascii.b2a_base64(digest).decode(ENCODING),
+                #     }
+                #     self.send_message(self.sock, self.create_message(**digest_message))
+                #     response = self.receive_message()
+                #     if response == "rejected":
+                #         error = f"Check your credentials :("
+                #         self.username = None
+            else:
+                self.registration(dialog)
+                # message = {
+                #     "action": "register",
+                #     "password": self.password,
+                # }
+                # reg_request = self.create_message(**message)
+                # self.send_message(self.sock, reg_request)
+                # reg_response = self.receive_message()
+                # if reg_response == "accepted":
+                #     error = f"User {self.username} created"
+                # elif reg_response == "rejected":
+                #     error = f"Sorry, username {self.username} is busy :("
+                # self.username = None
+
+        del dialog
 
     def connect_db(self, db):
         self.db = db
-        # self.send_message(self.sock, self.create_message(action="get_users"))
+
+    def load_keys(self):
+        key = os.path.join(os.getcwd(), f"rsa_key.{self.username}.key")
+        if not os.path.exists(key):
+            keys = RSA.generate(2048, os.urandom)
+            with open(key, "wb") as f:
+                f.write(keys.export_key())
+        else:
+            with open(key, "rb") as f:
+                keys = RSA.import_key(f.read())
+
+        self.keys = keys
+        self.decryptor = PKCS1_OAEP.new(keys)
+        self.public_key = keys.public_key().export_key()
 
     @Log()
     def outgoing(self, message):
-        if isinstance(message, dict):
-            message = self.create_message(**message)
-            if message.get("body"):
-                with self.lock:
-                    self.db.add_message(
-                        message["user_id"],
-                        message["body"],
-                        message["time"],
-                        recieved=False,
-                    )
-            self.send_message(self.sock, message)
-        elif message.startswith("/"):
-            context = {}
-            message = message[1:]
-            if message in ("get_contacts", "get_users"):
-                context["action"] = message
-            elif message in ("add_contact", "del_contact"):
-                context["action"] = message
-                context["user_id"] = input("Enter username of target: ")
-            if context:
-                self.send_message(self.sock, self.create_message(**context))
-        else:
-            pass
+        message = self.create_message(**message)
+        if message.get("body"):
+            with self.lock:
+                self.db.add_message(
+                    message["user_id"],
+                    message["body"],
+                    message["time"],
+                    recieved=False,
+                )
+            encrypted_body = self.encryptor.encrypt(message["body"].encode(ENCODING))
+            message["body"] = base64.b64encode(encrypted_body).decode(ENCODING)
+        self.send_message(self.sock, message)
+        logger.debug(f"Sent message {message}")
 
     @Log()
     def incomming(self):
-        while message := self.receive_message():
-            print(message)
+        while True:
+            try:
+                message = self.receive_message()
+                logger.debug(f"Received message {message}")
+            except Exception as e:
+                logger.error(f"Exception {e} while recieving message {message}")
+                pass
 
     @Log()
     def main_loop(self):

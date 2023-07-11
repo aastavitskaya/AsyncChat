@@ -1,7 +1,17 @@
 import select
+import os
+import binascii
+import hmac
+import hashlib
+
+from logging import getLogger
 from http import HTTPStatus
 
 from .exceptions import PortError
+from config.settigs import ENCODING, ITERATIONS
+
+
+logger = getLogger("server")
 
 
 class NamedPort:
@@ -53,10 +63,32 @@ class Users:
         del self.sockets_dict[fileno]
 
 
+def login_required(func):
+    def wrapper(*args, **kwargs):
+        instance = args[0]
+        message = args[1]
+
+        if message["user_login"] in instance.users.usernames or message["action"] in (
+            "login",
+            "auth",
+            "register",
+        ):
+            return func(*args, **kwargs)
+        else:
+            logger.warning(f"Not enough permissions for handle messafe {message}")
+            return
+
+    return wrapper
+
+
 class ExchangeMessageMixin:
+    @login_required
     def exchange_service(self, message, events):
         # p2p delivery
-        if message["action"] == "message" and "user_id" in message:
+        if (
+            message["action"] in ("message", "public_key_request", "public_key")
+            and "user_id" in message
+        ):
             for client, event in events:
                 if (
                     message["user_id"] == self.users.get_username(client)
@@ -74,20 +106,40 @@ class ExchangeMessageMixin:
         elif message["action"] == "login":
             username = message["user_login"]
             if username not in self.users.usernames:
-                fileno = message["client"]
-                socket = self.users.sockets[fileno]
-                ip_address, port = socket.getpeername()
-                self.users.usernames[username] = fileno
-                self.db.activate_client(
-                    message["user_login"],
-                    ip_address=ip_address,
-                    port=port,
-                )
-                result = "accepted"
-                self.queue.put("activated")
+                if self.authentication(message):
+                    fileno = message["client"]
+                    socket = self.users.sockets[fileno]
+                    ip_address, port = socket.getpeername()
+                    self.users.usernames[username] = fileno
+                    self.db.activate_client(
+                        message["user_login"],
+                        ip_address=ip_address,
+                        port=port,
+                    )
+                    result = "accepted"
+                    self.queue.put("activated")
+                else:
+                    result = "rejected"
             else:
                 result = "rejected"
             response = self.template_message(action="login", username_status=result)
+
+        # register client
+        elif message["action"] == "register":
+            salt = message["user_login"].encode(ENCODING)
+            password_hash = hashlib.pbkdf2_hmac(
+                "sha256", message["password"].encode(ENCODING), salt, ITERATIONS
+            )
+            password_hash_string = binascii.hexlify(password_hash).decode(ENCODING)
+            new_client = self.db.register_client(
+                username=message["user_login"],
+                password=password_hash_string,
+            )
+            if new_client:
+                result = "accepted"
+            else:
+                result = "rejected"
+            response = self.template_message(action="register", reg_status=result)
 
         # get_contacts
         elif message["action"] == "get_contacts":
@@ -130,3 +182,25 @@ class ExchangeMessageMixin:
                 error=self.get_error,
             )
         return message["client"], response
+
+    def authentication(self, message):
+        request = {
+            "action": "auth",
+            "response": HTTPStatus.NETWORK_AUTHENTICATION_REQUIRED,
+        }
+        random_string = binascii.hexlify(os.urandom(64))
+        request["body"] = random_string.decode(ENCODING)
+        hashed_string = hmac.new(
+            self.db.get_password(message["user_login"]).encode(ENCODING),
+            random_string,
+            "sha256",
+        )
+        digest = hashed_string.digest()
+        sock = self.users.sockets[message["client"]]
+        self.send_message(sock, request)
+        response = self.get_message(sock)
+        client_digest = binascii.a2b_base64(response["body"])
+        if hmac.compare_digest(digest, client_digest):
+            return True
+        else:
+            False
