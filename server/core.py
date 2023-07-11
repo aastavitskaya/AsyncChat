@@ -1,6 +1,7 @@
 import select
 import sys
 from queue import Queue
+import threading
 from http import HTTPStatus
 from collections import deque
 from socket import AF_INET, SOCK_STREAM, socket
@@ -27,6 +28,7 @@ class Server(Chat, ExchangeMessageMixin, metaclass=ServerVerifier):
     def __init__(self, db):
         self.users = Users()
         self.queue = Queue()
+        self.lock = threading.Lock()
         self.messages = deque()
         self.dispatcher = select.poll()
         self.db = db

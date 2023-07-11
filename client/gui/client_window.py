@@ -19,6 +19,10 @@ class Ui_MainWindow(QtWidgets.QDialog):
         self.listView_2.setGeometry(QtCore.QRect(210, 30, 420, 330))
         self.listView_2.setObjectName("listView_2")
         self.listView_2.setModel(self.messages)
+        self.listView_2.setHorizontalScrollBarPolicy(
+            QtCore.Qt.ScrollBarPolicy.ScrollBarAlwaysOff
+        )
+        self.listView_2.setWordWrap(True)
         self.textEdit = QtWidgets.QTextEdit(parent=self.centralwidget)
         self.textEdit.setGeometry(QtCore.QRect(210, 370, 360, 70))
         self.textEdit.setObjectName("textEdit")
