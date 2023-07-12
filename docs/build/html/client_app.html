@@ -1,0 +1,483 @@
+
+<!DOCTYPE html>
+
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>client_app package &#8212; документация Chat 0.1.0</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/translations.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="genindex.html" />
+    <link rel="search" title="Поиск" href="search.html" />
+    <link rel="next" title="client_app.gui package" href="client_app.gui.html" />
+    <link rel="prev" title="client module" href="client.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="client-app-package">
+<h1>client_app package<a class="headerlink" href="#client-app-package" title="Permalink to this heading">¶</a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Permalink to this heading">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="client_app.gui.html">client_app.gui package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="client_app.gui.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="client_app.gui.html#module-client_app.gui.client_window">client_app.gui.client_window module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="client_app.gui.html#client_app.gui.client_window.Ui_MainWindow"><code class="docutils literal notranslate"><span class="pre">Ui_MainWindow</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.client_window.Ui_MainWindow.retranslateUi"><code class="docutils literal notranslate"><span class="pre">Ui_MainWindow.retranslateUi()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.client_window.Ui_MainWindow.setupUi"><code class="docutils literal notranslate"><span class="pre">Ui_MainWindow.setupUi()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client_app.gui.html#module-client_app.gui.ui_client">client_app.gui.ui_client module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.MainClientGui"><code class="docutils literal notranslate"><span class="pre">MainClientGui</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.MainClientGui.add_contact"><code class="docutils literal notranslate"><span class="pre">MainClientGui.add_contact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.MainClientGui.del_contact"><code class="docutils literal notranslate"><span class="pre">MainClientGui.del_contact()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.MainClientGui.refresh_data"><code class="docutils literal notranslate"><span class="pre">MainClientGui.refresh_data()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.MainClientGui.select_chat"><code class="docutils literal notranslate"><span class="pre">MainClientGui.select_chat()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.MainClientGui.send_to_user"><code class="docutils literal notranslate"><span class="pre">MainClientGui.send_to_user()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.MainClientGui.start_messaging"><code class="docutils literal notranslate"><span class="pre">MainClientGui.start_messaging()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.MainClientGui.update_messages"><code class="docutils literal notranslate"><span class="pre">MainClientGui.update_messages()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.MainClientGui.update_users"><code class="docutils literal notranslate"><span class="pre">MainClientGui.update_users()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.Receiver"><code class="docutils literal notranslate"><span class="pre">Receiver</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.Receiver.got_message"><code class="docutils literal notranslate"><span class="pre">Receiver.got_message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.Receiver.receive"><code class="docutils literal notranslate"><span class="pre">Receiver.receive()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.Transmitter"><code class="docutils literal notranslate"><span class="pre">Transmitter</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.Transmitter.sent_message"><code class="docutils literal notranslate"><span class="pre">Transmitter.sent_message</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.ui_client.Transmitter.transmit"><code class="docutils literal notranslate"><span class="pre">Transmitter.transmit()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client_app.gui.html#module-client_app.gui.welcome">client_app.gui.welcome module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="client_app.gui.html#client_app.gui.welcome.UiDialog"><code class="docutils literal notranslate"><span class="pre">UiDialog</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.welcome.UiDialog.input_username"><code class="docutils literal notranslate"><span class="pre">UiDialog.input_username()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.welcome.UiDialog.register"><code class="docutils literal notranslate"><span class="pre">UiDialog.register()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.welcome.UiDialog.retranslateUi"><code class="docutils literal notranslate"><span class="pre">UiDialog.retranslateUi()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.welcome.UiDialog.setupUi"><code class="docutils literal notranslate"><span class="pre">UiDialog.setupUi()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="client_app.gui.html#client_app.gui.welcome.UiDialog.sign_in"><code class="docutils literal notranslate"><span class="pre">UiDialog.sign_in()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="client_app.gui.html#module-client_app.gui">Module contents</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this heading">¶</a></h2>
+</section>
+<section id="module-client_app.client_utils">
+<span id="client-app-client-utils-module"></span><h2>client_app.client_utils module<a class="headerlink" href="#module-client_app.client_utils" title="Permalink to this heading">¶</a></h2>
+<p>Модуль, содержащий утилиты клиентского приложениия:
+- обработчик входящих сообщений.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="client_app.client_utils.MessageHandlerMixin">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">client_app.client_utils.</span></span><span class="sig-name descname"><span class="pre">MessageHandlerMixin</span></span><a class="headerlink" href="#client_app.client_utils.MessageHandlerMixin" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс миксин, отвечающий за логику обработки входящих сообщений.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.client_utils.MessageHandlerMixin.parse_message">
+<span class="sig-name descname"><span class="pre">parse_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">message</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.client_utils.MessageHandlerMixin.parse_message" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод обработки входящих сообщений клиентского приложения.
+:message: (dict) принимаемое из сокета сообщение.
+:return: (str) возвращает сформированную из значений сообщения строку.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-client_app.core">
+<span id="client-app-core-module"></span><h2>client_app.core module<a class="headerlink" href="#module-client_app.core" title="Permalink to this heading">¶</a></h2>
+<p>Модуль с основным классом клиентского приложения.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="client_app.core.Client">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">client_app.core.</span></span><span class="sig-name descname"><span class="pre">Client</span></span><a class="headerlink" href="#client_app.core.Client" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="config.html#config.utils.Chat" title="config.utils.Chat"><code class="xref py py-class docutils literal notranslate"><span class="pre">Chat</span></code></a>, <a class="reference internal" href="#client_app.client_utils.MessageHandlerMixin" title="client_app.client_utils.MessageHandlerMixin"><code class="xref py py-class docutils literal notranslate"><span class="pre">MessageHandlerMixin</span></code></a></p>
+<p>Основной класс клиентского приложения, отвечает за работу с сокетами
+и обработку входящих / исходящих сообщений.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.core.Client.attrs">
+<span class="sig-name descname"><span class="pre">attrs</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">{'_Client_attrs':</span> <span class="pre">{'AF_INET',</span> <span class="pre">'SOCK_STREAM',</span> <span class="pre">'connect'}}</span></em><a class="headerlink" href="#client_app.core.Client.attrs" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.authorisation">
+<span class="sig-name descname"><span class="pre">authorisation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.authorisation" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.connect_db">
+<span class="sig-name descname"><span class="pre">connect_db</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">db</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.connect_db" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод осуществляет подключение экземпляра базы данных
+к клиентскому приложению.
+:db: (ClientDBase) база данных</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.connect_socket">
+<span class="sig-name descname"><span class="pre">connect_socket</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.connect_socket" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.create_message">
+<span class="sig-name descname"><span class="pre">create_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.create_message" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.incomming">
+<span class="sig-name descname"><span class="pre">incomming</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.incomming" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.load_keys">
+<span class="sig-name descname"><span class="pre">load_keys</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.load_keys" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод считывает ключи шифрования из файла либо создает новые, если файл не существует.
+Создает и сохраняет публичный ключ в атрибутах приложения.
+Помещает ключи в объект-дешифровщик.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.outgoing">
+<span class="sig-name descname"><span class="pre">outgoing</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.outgoing" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="client_app.core.Client.parse_params">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">parse_params</span></span><a class="headerlink" href="#client_app.core.Client.parse_params" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.presence">
+<span class="sig-name descname"><span class="pre">presence</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.presence" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.receive_message">
+<span class="sig-name descname"><span class="pre">receive_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.receive_message" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.registration">
+<span class="sig-name descname"><span class="pre">registration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.registration" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.request_public_key">
+<span class="sig-name descname"><span class="pre">request_public_key</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.request_public_key" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.run">
+<span class="sig-name descname"><span class="pre">run</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.run" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.core.Client.set_username">
+<span class="sig-name descname"><span class="pre">set_username</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.Client.set_username" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="client_app.core.ClientVerifier">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">client_app.core.</span></span><span class="sig-name descname"><span class="pre">ClientVerifier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">bases</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">namespaces</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.core.ClientVerifier" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <a class="reference internal" href="config.html#config.utils.BaseVerifier" title="config.utils.BaseVerifier"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseVerifier</span></code></a></p>
+<p>Метакласс валидатор, проверяет, что атрибут со ссылкой на сокет не создаётся
+на уровне класса, а также что сокет не использует методы listen и accept.</p>
+</dd></dl>
+
+</section>
+<section id="module-client_app.models">
+<span id="client-app-models-module"></span><h2>client_app.models module<a class="headerlink" href="#module-client_app.models" title="Permalink to this heading">¶</a></h2>
+<p>Модуль, описывающий таблицы и операции над базой данных клиентского приложения.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">client_app.models.</span></span><span class="sig-name descname"><span class="pre">ClientDBase</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Класс хранилища клиентского приложения.
+:db: (pony.Database) экземпляр базы данных.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.AllUsers">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">AllUsers</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase.AllUsers" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></p>
+<p>Таблица всех пользователей зарегистрированных на сервере.
+:username: (str) имя пользователя.
+:is_active: (bool) в настоящий момент активен, если истина.
+:is_contact: (bool) доюавден в контакты, если истина.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.AllUsers.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#client_app.models.ClientDBase.AllUsers.id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.AllUsers.is_active">
+<span class="sig-name descname"><span class="pre">is_active</span></span><a class="headerlink" href="#client_app.models.ClientDBase.AllUsers.is_active" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.AllUsers.is_contact">
+<span class="sig-name descname"><span class="pre">is_contact</span></span><a class="headerlink" href="#client_app.models.ClientDBase.AllUsers.is_contact" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.AllUsers.username">
+<span class="sig-name descname"><span class="pre">username</span></span><a class="headerlink" href="#client_app.models.ClientDBase.AllUsers.username" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.Contacts">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Contacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase.Contacts" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></p>
+<p>Таблица контактов клиентского приложения.
+:username: (str) имя пользователя.
+:deleted: (bool) статус удаления из контактов.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.Contacts.deleted">
+<span class="sig-name descname"><span class="pre">deleted</span></span><a class="headerlink" href="#client_app.models.ClientDBase.Contacts.deleted" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.Contacts.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#client_app.models.ClientDBase.Contacts.id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.Contacts.username">
+<span class="sig-name descname"><span class="pre">username</span></span><a class="headerlink" href="#client_app.models.ClientDBase.Contacts.username" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.Messages">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">Messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">args</span></span></em>, <em class="sig-param"><span class="o"><span class="pre">**</span></span><span class="n"><span class="pre">kwargs</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase.Messages" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Базовые классы: <code class="xref py py-class docutils literal notranslate"><span class="pre">Entity</span></code></p>
+<p>Таблица истории сообщений пользователя.
+:contact: (str) имя пользователя, в переписке с которым находится сообщение.
+:message: (str) тело сообщения.
+:date: (datetime) дата добавления создания сообщения.
+:recieved: (bool) сообщение получен, если истина, иначе отправлено.
+:deleted: (bool) не отображается в переписке, если истина.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.Messages.contact">
+<span class="sig-name descname"><span class="pre">contact</span></span><a class="headerlink" href="#client_app.models.ClientDBase.Messages.contact" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.Messages.date">
+<span class="sig-name descname"><span class="pre">date</span></span><a class="headerlink" href="#client_app.models.ClientDBase.Messages.date" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.Messages.deleted">
+<span class="sig-name descname"><span class="pre">deleted</span></span><a class="headerlink" href="#client_app.models.ClientDBase.Messages.deleted" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.Messages.id">
+<span class="sig-name descname"><span class="pre">id</span></span><a class="headerlink" href="#client_app.models.ClientDBase.Messages.id" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.Messages.message">
+<span class="sig-name descname"><span class="pre">message</span></span><a class="headerlink" href="#client_app.models.ClientDBase.Messages.message" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.Messages.recieved">
+<span class="sig-name descname"><span class="pre">recieved</span></span><a class="headerlink" href="#client_app.models.ClientDBase.Messages.recieved" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.add_message">
+<span class="sig-name descname"><span class="pre">add_message</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">contact_username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">message</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">time</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">recieved</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase.add_message" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод добавления сообщения в базу данных.
+:contact_username: (str) имя пользователя с которым велась переписка.
+:message: (str) текст сообщения.
+:time: (datetime) дата создания сообщения.
+:recieved: (bool) входящее сообщение, если истина, иначе исходящее.</p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.db">
+<span class="sig-name descname"><span class="pre">db</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">&lt;pony.orm.core.Database</span> <span class="pre">object&gt;</span></em><a class="headerlink" href="#client_app.models.ClientDBase.db" title="Ссылка на это определение">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.get_contacts">
+<span class="sig-name descname"><span class="pre">get_contacts</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase.get_contacts" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод, возвращающий список имен пользователей из таблицы контактов, если пользователь
+не помечен как удаленный.
+:return: (list(str)) список именпользователей.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.get_messages">
+<span class="sig-name descname"><span class="pre">get_messages</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase.get_messages" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод, возвращающий список сообщений от конкретного пользователя,
+если сообщения не помечены как удаленные.
+:username: (str) имя пользователя, чьи сообщения возвращаются.
+:return: list(ClientDBase.Messages) список сообщений.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.get_users">
+<span class="sig-name descname"><span class="pre">get_users</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase.get_users" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод возвращающий список всех пользователей зарегистрированных на сервере.
+:return: (list(ClientDBase.AllUsers)) список всех экземпляров класса ClientDBase.AllUsers.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.set_users">
+<span class="sig-name descname"><span class="pre">set_users</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">clients</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase.set_users" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод обновляющий все записи в таблице ClientDBase.AllUsers в соответствии с
+полученными данными от сервера о пользователях.
+:clients: (list(Storage.Client)) список записей из таблицы пользователей сервера
+с добавлением атрибута is_contact (bool)</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.update_all_users">
+<span class="sig-name descname"><span class="pre">update_all_users</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase.update_all_users" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод, обновляющий значение is_contact в таблиц AllUsers на основании данных
+таблицы Contacts.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.update_contacts">
+<span class="sig-name descname"><span class="pre">update_contacts</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">users_list</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase.update_contacts" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод, обновляющий таблицу контакты на основании полученного списка пользователей с сервера
+Если пользователь больше не в контактах, он помечается удаленным,
+Если есть пользователь, которого нет в контактах, он создается.
+Если есть пользователь, который ранее был удален, он помечается не удаленным.
+При завершении метода на основании новых данных обновляется таблица AllUsers
+:users_list: (list(Storage.ContactsList)) список записей из таблицы контактов сервера.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="client_app.models.ClientDBase.update_messages">
+<span class="sig-name descname"><span class="pre">update_messages</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#client_app.models.ClientDBase.update_messages" title="Ссылка на это определение">¶</a></dt>
+<dd><p>Метод помечает удаленными сообщения из таблицы Messages в случае, если
+контакт из таблицы Contacts помечен удаленным.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-client_app">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-client_app" title="Permalink to this heading">¶</a></h2>
+<p>Основной пакет клиентского приложения, содержащий движок и графицескую оболочку.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">Chat</a></h1>
+
+
+
+
+
+
+
+
+<h3>Навигация</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Chat</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="client.html">client module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">client_app package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="log.html">log package</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server.html">server module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_app.html">server_app package</a></li>
+</ul>
+</li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="modules.html">Chat</a><ul>
+      <li>Previous: <a href="client.html" title="предыдущая глава">client module</a></li>
+      <li>Next: <a href="client_app.gui.html" title="следующая глава">client_app.gui package</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Быстрый поиск</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Искать" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2023, kpomak.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 6.1.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.13</a>
+      
+      |
+      <a href="_sources/client_app.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
