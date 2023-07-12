@@ -88,7 +88,7 @@ class MainClientGui(Ui_MainWindow):
         for user in users:
             if user.username == self.client.username:
                 continue
-            active = "🍉" if user.is_active else "💀"
+            active = "🍍" if user.is_active else "💀"
             contact = "👤" if user.is_contact else " "
             username = QStandardItem(f"{active} {user.username} {contact}")
             username.setEditable(False)

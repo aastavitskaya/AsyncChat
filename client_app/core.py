@@ -57,7 +57,7 @@ class Client(Chat, MessageHandlerMixin, metaclass=ClientVerifier):
         Метод, инициирующий экземпляр клиентского приложения.
         :lock: (threading.Lock) блокировка для работы с базой данных.
         :sock_lock: (threading.Lock) блокировка для работы с сокетом
-        :username: (str_имя пользователя клиентского приложения.
+        :username: (str) имя пользователя клиентского приложения.
         :keys: (Crypto.PublicKey.RSA) ключи шифрования, для генерации публичного ключа
         и расшифровки входящих сообщений
         :public_key: (str) публичный ключ корреспондента для шифрования исходящих сообщений
@@ -95,7 +95,7 @@ class Client(Chat, MessageHandlerMixin, metaclass=ClientVerifier):
     @Log()
     def create_message(self, **kwargs):
         """
-        Метод создающий сообщение из переданных ключевых аргументов.
+        Метод, создающий сообщение из переданных ключевых аргументов.
         :return: (dict) возвращает словарь сообщение.
         """
         logger.info(f"Creating message from user {self.username}")
@@ -104,7 +104,7 @@ class Client(Chat, MessageHandlerMixin, metaclass=ClientVerifier):
     @Log()
     def presence(self):
         """
-        Метод создающий сообщение о присутствии по протоколу JIM/
+        Метод, создающий сообщение о присутствии по протоколу JIM/
         :return: (dict) возвращает словарь сообщение, где action == presence
         """
         logger.info(f"Creating precense message")
@@ -225,7 +225,7 @@ class Client(Chat, MessageHandlerMixin, metaclass=ClientVerifier):
     @Log()
     def set_username(self, app):
         """
-        Метод осуществляющий первичный запрос подключения к серверу
+        Метод, осуществляющий первичный запрос подключения к серверу
         с целью регистрации или авторизации, используя графический интерфейс.
         :app: (PyQt6.QtWidgets.QApplication) графический интерфейс приложения.
         """

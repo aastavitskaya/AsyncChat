@@ -22,7 +22,7 @@ class MessageHandlerMixin:
         :message: (dict) принимаемое из сокета сообщение.
         :return: (str) возвращает сформированную из значений сообщения строку.
         """
-        logger.info(f"Parsing messagefrom server: {message}")
+        logger.info(f"Parsing message from server: {message}")
 
         if message["action"] == "login":
             return message["username_status"]
