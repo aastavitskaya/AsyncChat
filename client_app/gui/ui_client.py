@@ -1,9 +1,8 @@
 from queue import Queue
-from PyQt6.QtCore import QThread, QObject, pyqtSignal, Qt, pyqtSlot, QEvent
-from PyQt6.QtWidgets import QMenu, QListView, QTableWidgetItem
+from PyQt6.QtCore import QThread, QObject, pyqtSignal, Qt, pyqtSlot
 
-from PyQt6.QtGui import QStandardItem, QStandardItemModel, QFont, QAction
-from client.gui.client_window import Ui_MainWindow
+from PyQt6.QtGui import QStandardItem, QStandardItemModel, QFont
+from client_app.gui.client_window import Ui_MainWindow
 
 
 class Receiver(QObject):
@@ -15,8 +14,13 @@ class Receiver(QObject):
 
     @pyqtSlot()
     def receive(self):
-        while message := self.client.receive_message():
-            self.got_message.emit()
+        while True:
+            try:
+                self.client.receive_message()
+            except Exception:
+                pass
+            else:
+                self.got_message.emit()
 
 
 class Transmitter(QObject):
@@ -94,6 +98,7 @@ class MainClientGui(Ui_MainWindow):
     def select_chat(self):
         self.chat = self.listView.currentIndex().data()[2:-2]
         self.label_2.setText(f"{self.chat}")
+        self.client.request_public_key(self.chat)
         self.update_messages()
 
     @pyqtSlot()

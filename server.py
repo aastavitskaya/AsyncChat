@@ -1,15 +1,25 @@
+"""
+Запускающий модуль сервера.
+"""
+
 import threading
 import os
 import sys
 from PyQt6 import QtWidgets
 
 from config.settigs import DB_FILE_NAME
-from server.core import Server
-from server.models import Storage
-from server.gui.server import UiMainWindow
+from server_app.core import Server
+from server_app.models import Storage
+from server_app.gui.server import UiMainWindow
 
 
 def main():
+    """
+    Основная функция запуска сервера.
+    Слздает экземпляры приложения сервера, базы данных, графического интерфейса.
+    Запускает сервер и процесс уведлмления клиентов о статусе участников чата
+    в фоновых потоках.
+    """
     db = Storage()
     runner = Server(db=db)
 

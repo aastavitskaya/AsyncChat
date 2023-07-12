@@ -1,3 +1,7 @@
+"""
+Общий пакет логировани для кллиентского и серверного приложений.
+Содержит директории для хранения логов и пакет с их конфигурационными файлами
+"""
 import os
 import sys
 from logging import FileHandler, Formatter, Logger, StreamHandler, getLogger
@@ -9,7 +13,21 @@ from config.settigs import ENCODING, LOGGER_LEVEL
 
 
 class LoggerProxy(Logger):
+    """
+    Класс проверяющий наличие логера с указанным именем и создание его экземпляра.
+    Осуществляет создание и настройку настройку логгера в случае его отсутствия
+    """
+
     def get_logger(self, daily_rotation=False, as_decorator=False):
+        """
+        Метод проверяет, создавался ли логгер с указанным именем ранее и возвращает
+        его экземпляр. В противном случае создает и настраивает новый логгер.
+        :daily_rotation: (bool) аргумент, указывающий на необходимость проводить
+        ежедневную ротацию файлов лога
+        :as_decorator: (bool) аргумент, указывающий на возможность использования
+        полученного логгера в качестве декоратора
+        :return: (logging.Logger) возвращает экземпляр класса Logger
+        """
         if self.name in self.manager.loggerDict:
             return self.manager.loggerDict[self.name]
 

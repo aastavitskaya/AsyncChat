@@ -1,3 +1,8 @@
+"""
+Модуль, содержащий утилиты клиентского приложениия:
+- обработчик входящих сообщений. 
+"""
+
 import base64
 from log import LoggerProxy
 from config.settigs import ENCODING
@@ -7,7 +12,16 @@ logger = proxy.get_logger()
 
 
 class MessageHandlerMixin:
+    """
+    Класс миксин, отвечающий за логику обработки входящих сообщений.
+    """
+
     def parse_message(self, message):
+        """
+        Метод обработки входящих сообщений клиентского приложения.
+        :message: (dict) принимаемое из сокета сообщение.
+        :return: (str) возвращает сформированную из значений сообщения строку.
+        """
         logger.info(f"Parsing messagefrom server: {message}")
 
         if message["action"] == "login":

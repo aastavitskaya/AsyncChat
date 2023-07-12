@@ -1,3 +1,7 @@
+"""
+Модуль для создания и настройки логгера, который можно использовать
+в качестве декоратора функций.
+"""
 import os
 import sys
 import inspect
@@ -6,13 +10,26 @@ from config.utils import Chat
 
 
 class Log:
+    """
+    Класс для создания логгера, используемого в качестве декоратора.
+    """
+
     def __init__(self):
+        """
+        Магический метод для создания экземпляра логгера.
+        """
         name = os.path.split(sys.argv[0])[-1]
         proxy = LoggerProxy(name)
         self.logger = proxy.get_logger(as_decorator=True)
         self.logger.propagate = False
 
     def __call__(self, func):
+        """
+        Магический метод обработки декорируемой функции.
+        Записывает в лог имя функции, и из какого она модуля вызвана.
+        :func: декорируемая функция.
+        """
+
         def wrapper(*args, **kwargs):
             wrapped_args = (
                 args[1:]

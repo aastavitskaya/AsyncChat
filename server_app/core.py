@@ -8,8 +8,8 @@ from socket import AF_INET, SOCK_STREAM, socket
 
 from config.settigs import DEFAULT_PORT, MAX_CONNECTIONS, TIMEOUT
 from config.utils import Chat, BaseVerifier
-from server.server_utils import Users, ExchangeMessageMixin, NamedPort
-from server.exceptions import PortError
+from server_app.server_utils import Users, ExchangeMessageMixin, NamedPort
+from server_app.exceptions import PortError
 from log.settings.decor_log_config import Log
 from log.settings.server_log_config import logger
 
