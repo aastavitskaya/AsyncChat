@@ -1,15 +1,13 @@
 import os
 import sys
-import time
 import unittest
-from http import HTTPStatus
 from unittest.mock import patch
 from socket import socket
 
 sys.path.append(os.getcwd())
 
 from config.settigs import DEFAULT_PORT
-from server import Server
+from server_app.core import Server
 
 
 TEST_PORT = 5000

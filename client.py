@@ -1,12 +1,23 @@
+"""
+Запускающий модуль для клиентского приложения.
+
+"""
 import sys
 from PyQt6 import QtWidgets
 
-from client.models import ClientDBase
-from client.gui.ui_client import MainClientGui
-from client.core import Client
+from client_app.models import ClientDBase
+from client_app.gui.ui_client import MainClientGui
+from client_app.core import Client
 
 
 def main():
+    """
+    Главная функция запускающего модуля.
+    Создает экземпляр клиентского приложения и графическую оболочку.
+    Запускает процедуру регистрации или авторизации.
+    Создает или загружает из файла ключи безопасности.
+    Подключает базу данных.
+    """
     app = QtWidgets.QApplication(sys.argv)
 
     client = Client()

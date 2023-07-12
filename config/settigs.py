@@ -1,6 +1,11 @@
+"""
+Общий модуль, содержащий основные параметры, используемые в 
+клиентском и серверном приложениях.
+"""
+
 import logging
 
-LOGGER_LEVEL = logging.ERROR
+LOGGER_LEVEL = logging.DEBUG
 
 DEFAULT_PORT = 7777
 
@@ -15,6 +20,8 @@ DEBUG = False
 
 TIMEOUT = 0.5
 CHECK_TIMEOUT = 5
+
+ITERATIONS = 10000
 
 ERRORS = [
     "Your lack of attention to detail is so abysmal, you make a sloth look like a speed demon.",

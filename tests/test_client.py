@@ -1,6 +1,5 @@
 import os
 import sys
-import time
 import unittest
 from http import HTTPStatus
 from unittest.mock import patch
@@ -9,8 +8,8 @@ from socket import socket
 sys.path.append(os.getcwd())
 
 from config.settigs import DEFAULT_PORT
-from client import Client
-from server import Server
+from client_app.core import Client
+from server_app.core import Server
 
 TEST_PORT = 5000
 TEST_IP = "127.0.0.1"
